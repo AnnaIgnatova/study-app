@@ -1,0 +1,53 @@
+.welcome {
+  overflow: hidden;
+  height: 100vh;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-circle {
+  position: absolute;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #ffffff 0%,
+    rgba(80, 62, 157, 0) 99.97%,
+    rgba(255, 255, 255, 0) 99.98%
+  );
+  width: 1000px;
+  height: 1000px;
+  opacity: 0.6;
+  left: 25%;
+}
+.welcome-img,
+.welcome-title,
+.welcome-subtitle {
+  z-index: 1;
+}
+.welcome-title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 42px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  display: block;
+  width: 30%;
+}
+
+.welcome-subtitle {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 50px;
+}
+.welcome-img {
+  width: 400px;
+  object-fit: contain;
+}

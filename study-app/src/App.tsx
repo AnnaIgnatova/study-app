@@ -13,18 +13,20 @@ import { Welcome } from './pages/welcome';
 
 const App = () => {
   return (
-    <RoutesWrapper>
-      <Route path="/" element={<Welcome />}></Route>
-      <Route path="/main" element={<Main />}></Route>
-      <Route path="/user" element={<User />}></Route>
-      <Route path="/settings" element={<Settings />}></Route>
-      <Route path="/testing" element={<Testing />}></Route>
-      <Route path="/testing-task" element={<TestingTask />}></Route>
-      <Route path="/theory" element={<Theory />}></Route>
-      <Route path="/examples" element={<Example />}></Route>
-      <Route path="/practise" element={<Practise />}></Route>
-      <Route path="*" element={<NotFound />}></Route>
-    </RoutesWrapper>
+    <div className="container">
+      <RoutesWrapper>
+        <Route path="/" element={<Welcome />}></Route>
+        <Route path="/main" element={<Main />}></Route>
+        <Route path="/user" element={<User />}></Route>
+        <Route path="/settings" element={<Settings />}></Route>
+        <Route path="/testing" element={<Testing />}></Route>
+        <Route path="/testing-task" element={<TestingTask />}></Route>
+        <Route path="/theory" element={<Theory />}></Route>
+        <Route path="/examples" element={<Example />}></Route>
+        <Route path="/practise" element={<Practise />}></Route>
+        <Route path="*" element={<NotFound />}></Route>
+      </RoutesWrapper>
+    </div>
   );
 };
 
