@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import { Route, Routes as RoutesWrapper } from 'react-router-dom';
 import './App.css';
+import { Example } from './pages/example';
+import { Main } from './pages/main';
+import { NotFound } from './pages/notFound';
+import { Practise } from './pages/practise';
+import { Settings } from './pages/settings';
+import { Testing } from './pages/testing';
+import { TestingTask } from './pages/testingTask';
+import { Theory } from './pages/theory';
+import { User } from './pages/user';
+import { Welcome } from './pages/welcome';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RoutesWrapper>
+      <Route path="/" element={<Welcome />}></Route>
+      <Route path="/main" element={<Main />}></Route>
+      <Route path="/user" element={<User />}></Route>
+      <Route path="/settings" element={<Settings />}></Route>
+      <Route path="/testing" element={<Testing />}></Route>
+      <Route path="/testing-task" element={<TestingTask />}></Route>
+      <Route path="/theory" element={<Theory />}></Route>
+      <Route path="/examples" element={<Example />}></Route>
+      <Route path="/practise" element={<Practise />}></Route>
+      <Route path="*" element={<NotFound />}></Route>
+    </RoutesWrapper>
   );
-}
+};
 
 export default App;
