@@ -1,0 +1,18 @@
+.filled-btn {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 15px 20px;
+  background-color: #fb6d3a;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+  border: 2px solid #fb6d3a;
+}
+
+.filled-btn:hover {
+  background-color: transparent;
+}

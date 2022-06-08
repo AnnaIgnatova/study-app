@@ -1,5 +1,6 @@
 import { Route, Routes as RoutesWrapper } from 'react-router-dom';
 import './App.css';
+import { Header } from './components/header';
 import { Example } from './pages/example';
 import { Main } from './pages/main';
 import { NotFound } from './pages/notFound';
@@ -14,6 +15,7 @@ import { Welcome } from './pages/welcome';
 const App = () => {
   return (
     <div className="container">
+      <Header />
       <RoutesWrapper>
         <Route path="/" element={<Welcome />}></Route>
         <Route path="/main" element={<Main />}></Route>
