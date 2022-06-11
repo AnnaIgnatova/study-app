@@ -11,10 +11,12 @@ import { TestingTask } from './pages/testingTask';
 import { Theory } from './pages/theory';
 import { User } from './pages/user';
 import { Welcome } from './pages/welcome';
+import { useAppSelector } from './store';
 
 const App = () => {
+  const { isLight } = useAppSelector((state) => state.themeReducer);
   return (
-    <div className="container">
+    <div className="container" style={{ backgroundColor: isLight ? '#503e9d' : '#140F2D' }}>
       <Header />
       <RoutesWrapper>
         <Route path="/" element={<Welcome />}></Route>
