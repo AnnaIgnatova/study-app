@@ -11,6 +11,6 @@
 .header-container {
   display: flex;
   justify-content: space-between;
-  width: 350px;
+  width: 400px;
   align-items: center;
 }

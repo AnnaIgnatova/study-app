@@ -1,0 +1,72 @@
+.settings {
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  padding-top: 200px;
+  padding-left: 170px;
+  padding-right: 170px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.settings-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.settings-avatar > img {
+  margin-bottom: 30px;
+}
+.settings-edit-btn {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-image: url(./../../assets/pencil.png);
+  background-size: contain;
+  border: none;
+  background-color: transparent;
+}
+.settings-info-container input {
+  width: 400px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.23);
+  border-radius: 10px;
+  border: none;
+  padding-left: 15px;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 300;
+}
+.settings-info-container label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 480px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: #ffffff;
+}
+
+.settings-info-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 520px;
+  margin-bottom: 30px;
+}
+.settings-info {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.settings-btns {
+  display: flex;
+  flex-direction: column;
+  height: 130px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+}

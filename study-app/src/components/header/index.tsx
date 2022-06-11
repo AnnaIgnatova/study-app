@@ -18,7 +18,7 @@ export const Header = () => {
           <NotFilledBtn text={t('header.signInBtn')} />
         </div>
       )}
-      {location.pathname === '/user' && (
+      {location.pathname !== '/' && (
         <Link to="/main">
           <FilledBtn text={t('header.toMain')} />
         </Link>
