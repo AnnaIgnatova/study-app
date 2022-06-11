@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux';
-import themeReducer from './../features/theme/themeSlice'
+import themeReducer from './../features/theme/themeSlice';
+import langReducer from './../features/lang/langSlice';
 
 const rootReducer = combineReducers({
   themeReducer,
+  langReducer,
 });
 
 export const store = () => {
