@@ -6,5 +6,12 @@ export const enLang = {
   header: {
     signInBtn: 'sign in',
     signUpBtn: 'sign up',
+    toMain: 'go to main',
+  },
+  user: {
+    editBtn: 'edit',
+    currentLevel: 'current level:',
+    basic: 'basic',
+    activity: 'your weekly activity',
   },
 };

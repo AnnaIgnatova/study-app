@@ -6,5 +6,12 @@ export const ruLang = {
   header: {
     signInBtn: 'войти',
     signUpBtn: 'зарегистрироваться',
+    toMain: 'на главную',
+  },
+  user: {
+    editBtn: 'редактировать',
+    currentLevel: 'текущий уровень:',
+    basic: 'базовый',
+    activity: 'ваша недельная активность'
   },
 };
