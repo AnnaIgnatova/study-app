@@ -1,6 +1,7 @@
 import { Route, Routes as RoutesWrapper } from 'react-router-dom';
 import './App.css';
 import { Header } from './components/header';
+import { CreateCourse } from './pages/createCourse';
 import { Example } from './pages/example';
 import { Main } from './pages/main';
 import { NotFound } from './pages/notFound';
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/theory" element={<Theory />}></Route>
         <Route path="/examples" element={<Example />}></Route>
         <Route path="/practise" element={<Practise />}></Route>
+        <Route path="/create-course" element={<CreateCourse />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </RoutesWrapper>
     </div>

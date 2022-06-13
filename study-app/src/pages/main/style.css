@@ -1,0 +1,108 @@
+.main {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 0 100px;
+  font-family: 'Roboto', sans-serif;
+}
+.main > nav {
+  width: 18%;
+}
+.nav-link {
+  display: flex;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #ffffff;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.main > .tasks-container {
+  background-color: #fff;
+  width: 82%;
+  height: 70vh;
+  border-radius: 40px;
+}
+.main > nav > ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 450px;
+  width: 100%;
+  list-style-type: none;
+}
+.nav-link-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  margin-right: 20px;
+  mix-blend-mode: overlay;
+}
+.nav-link-container {
+  display: flex;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  border-radius: 40px 0px 0px 40px;
+  transition: 0.2s;
+}
+.nav-link-container:hover {
+  background: #ffffff2d;
+}
+.nav-link-container-active {
+  background: #ffffff;
+}
+.nav-link-container-active > .nav-link {
+  color: #f38819;
+}
+.nav-link-container-active > .nav-link-icon {
+  mix-blend-mode: normal;
+}
+.tasks-container {
+  padding: 50px 100px;
+}
+.main-search {
+  width: 100%;
+  height: 100%;
+  background: #eeeeee;
+  border-radius: 15px;
+  display: block;
+  border: none;
+  padding-left: 70px;
+  font-size: 16px;
+  padding-right: 30px;
+}
+.main-search::placeholder {
+  font-size: 16px;
+}
+.main-search-container {
+  width: 60%;
+  height: 50px;
+  position: relative;
+  margin-bottom: 50px;
+}
+.main-search-container::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-image: url('./../../assets/search.png');
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  top: 30%;
+  left: 4%;
+}
+.main-title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
