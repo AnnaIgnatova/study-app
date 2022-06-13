@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export interface InfoInputProps {
   title: string;
@@ -9,6 +10,7 @@ export interface InfoInputProps {
 
 export const InfoInput = (props: InfoInputProps) => {
   const { placeholder, title, type, editInfo } = props;
+  const { t } = useTranslation();
   const [value, setValue] = useState<string>(placeholder);
   const [isEdit, setEdit] = useState<boolean>(false);
 
@@ -38,8 +40,8 @@ export const InfoInput = (props: InfoInputProps) => {
       <div className="settings-edit-info-container">
         {isEdit ? (
           <div className="settings-change-btns">
-            <button onClick={saveEdit}>сохранить</button>
-            <button onClick={cancelEdit}>отмена</button>
+            <button onClick={saveEdit}>{t('settings.save')}</button>
+            <button onClick={cancelEdit}>{t('settings.cancel')}</button>
           </div>
         ) : (
           <button

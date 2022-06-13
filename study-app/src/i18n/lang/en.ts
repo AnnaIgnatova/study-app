@@ -14,4 +14,13 @@ export const enLang = {
     basic: 'basic',
     activity: 'your weekly activity',
   },
+  settings: {
+    changeAvatar: 'change',
+    name: 'Name',
+    pass: 'Password',
+    deleteAcc: 'delete account',
+    signOut: 'log out',
+    save: 'save',
+    cancel: 'cancel',
+  },
 };

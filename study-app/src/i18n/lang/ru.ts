@@ -12,6 +12,15 @@ export const ruLang = {
     editBtn: 'редактировать',
     currentLevel: 'текущий уровень:',
     basic: 'базовый',
-    activity: 'ваша недельная активность'
+    activity: 'ваша недельная активность',
+  },
+  settings: {
+    changeAvatar: 'изменить',
+    name: 'Имя',
+    pass: 'Пароль',
+    deleteAcc: 'удалить аккаунт',
+    signOut: 'выйти из системы',
+    save: 'сохранить',
+    cancel: 'отмена',
   },
 };
