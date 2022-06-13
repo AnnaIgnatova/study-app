@@ -3,15 +3,17 @@ import { NotFilledBtn } from './../../components/notFilledBtn';
 import { ProgressPlot } from './Plot';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAppSelector } from '../../store';
 
 export const User = () => {
   const { t } = useTranslation();
+  const { name, email } = useAppSelector((state) => state.userReducer);
   return (
     <div className="user">
       <div className="user-info">
         <img src="./assets/avatar.png" alt="avatar" className="user-avatar" />
-        <span className="user-name">Анна</span>
-        <span className="user-email">missjellx@gmail.com</span>
+        <span className="user-name">{name}</span>
+        <span className="user-email">{email}</span>
         <Link to="/settings">
           <NotFilledBtn text={t('user.editBtn')} />
         </Link>

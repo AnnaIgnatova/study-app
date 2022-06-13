@@ -3,10 +3,12 @@ import { combineReducers } from 'redux';
 import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux';
 import themeReducer from './../features/theme/themeSlice';
 import langReducer from './../features/lang/langSlice';
+import userReducer from './../features/user/userSlice'
 
 const rootReducer = combineReducers({
   themeReducer,
   langReducer,
+  userReducer
 });
 
 export const store = () => {

@@ -37,6 +37,10 @@
   color: #fff;
   font-weight: 300;
 }
+.settings-info-container input::placeholder {
+  color: #fff;
+  opacity: 0.5;
+}
 .settings-info-container label {
   display: flex;
   justify-content: space-between;
@@ -52,7 +56,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 520px;
+  width: 650px;
   margin-bottom: 30px;
 }
 .settings-info {
@@ -69,4 +73,29 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 50px;
+}
+
+.settings-change-btns {
+  display: flex;
+  margin-left: 20px;
+}
+
+.settings-change-btns > button {
+  background-color: transparent;
+  border: 2px solid #fb6d3a;
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+  transition: 0.2s;
+  cursor: pointer;
+  margin-right: 15px;
+}
+.settings-change-btns > button:hover {
+  background-color: #fb6d3a;
+}
+.settings-edit-info-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 150px;
 }
