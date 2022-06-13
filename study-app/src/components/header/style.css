@@ -14,3 +14,9 @@
   width: 400px;
   align-items: center;
 }
+.user-link {
+  background-image: url('./../../assets/user.png');
+  width: 35px;
+  height: 35px;
+  background-size: contain;
+}

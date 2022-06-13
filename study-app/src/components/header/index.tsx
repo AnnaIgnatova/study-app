@@ -24,6 +24,7 @@ export const Header = () => {
         </Link>
       )}
       <div className="header-container">
+        {location.pathname !== '/user' && <Link to="/user" className="user-link" />}
         <Theme />
         <Lang />
       </div>

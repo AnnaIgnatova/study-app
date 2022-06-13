@@ -7,11 +7,11 @@ import { useAppSelector } from '../../store';
 
 export const User = () => {
   const { t } = useTranslation();
-  const { name, email } = useAppSelector((state) => state.userReducer);
+  const { name, email, avatar } = useAppSelector((state) => state.userReducer);
   return (
     <div className="user">
       <div className="user-info">
-        <img src="./assets/avatar.png" alt="avatar" className="user-avatar" />
+        <img src={avatar ? avatar : './assets/avatar.png'} alt="avatar" className="user-avatar" />
         <span className="user-name">{name}</span>
         <span className="user-email">{email}</span>
         <Link to="/settings">
