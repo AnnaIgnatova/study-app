@@ -99,3 +99,23 @@
   justify-content: flex-start;
   width: 150px;
 }
+#settings-file {
+  display: none;
+}
+.change-avatar-btn {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 15px 40px;
+  background-color: transparent;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+  border: 2px solid #fb6d3a;
+}
+
+.filled-btn:hover {
+  background-color: #fb6d3a;
+}

@@ -1,6 +1,7 @@
+import { ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NotFilledBtn } from '../../components/notFilledBtn';
-import { changeEmail, changeName, changePass } from '../../features/user/userSlice';
+import { changeAvatar, changeEmail, changeName, changePass } from '../../features/user/userSlice';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { InfoInput } from './InfoInput';
 import './style.css';
@@ -8,7 +9,7 @@ import './style.css';
 export const Settings = () => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
-  const { name, email, pass } = useAppSelector((state) => state.userReducer);
+  const { name, email, pass, avatar } = useAppSelector((state) => state.userReducer);
 
   const editInfo = (field: string, value: string) => {
     switch (field) {
@@ -29,11 +30,19 @@ export const Settings = () => {
     }
   };
 
+  const changeAvatarURL = (e: ChangeEvent) => {
+    const url = URL.createObjectURL((e.target! as HTMLInputElement).files![0]);
+    dispatch(changeAvatar(url));
+  };
+
   return (
     <div className="settings">
       <div className="settings-avatar">
-        <img src="./assets/avatar.png" alt="avatar" className="user-avatar" />
-        <NotFilledBtn text={t('settings.changeAvatar')} />
+        <img src={avatar ? avatar : './assets/avatar.png'} alt="avatar" className="user-avatar" />
+        <label htmlFor="settings-file" className="change-avatar-btn">
+          {t('settings.changeAvatar')}
+          <input id="settings-file" type="file" onChange={changeAvatarURL} />
+        </label>
       </div>
       <div className="settings-info">
         <InfoInput title={t('settings.name')} placeholder={name} type="text" editInfo={editInfo} />
