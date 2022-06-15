@@ -24,7 +24,7 @@
 .main > .tasks-container {
   background-color: #fff;
   width: 82%;
-  height: 70vh;
+  height: 78vh;
   border-radius: 40px;
 }
 .main > nav > ul {
@@ -105,4 +105,22 @@
   line-height: 26px;
   text-transform: uppercase;
   margin-bottom: 50px;
+}
+.topics-pagination {
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 30px;
+}
+.pagination-next,
+.pagination-prev {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  cursor: pointer;
+}
+.pagination-next {
+  transform: rotate(180deg);
 }

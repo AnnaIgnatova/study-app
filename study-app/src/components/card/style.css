@@ -1,0 +1,95 @@
+.topic-card {
+  width: 400px;
+  height: 240px;
+  background-size: cover;
+  border-radius: 20px;
+  background-position: center;
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.topic-level-num {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1751c;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+}
+.topic-time-num {
+  background: #f1751c;
+  border-radius: 7px;
+  width: 80px;
+  height: 30px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.topic-level-time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.topic-card-title {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  padding: 20px 40px;
+  margin-top: 70px;
+  margin-bottom: 5px;
+}
+.topic-links {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  width: 150px;
+  justify-content: space-between;
+}
+.topic-links img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+.topic-progress {
+  position: relative;
+  width: 170px;
+  height: 20px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+}
+.topic-progress-scale {
+  position: absolute;
+  height: 100%;
+  width: 111px;
+  background: #f1751c;
+  border-radius: 5px;
+  z-index: 1;
+}
+.topic-progress span {
+  position: absolute;
+  text-align: center;
+  z-index: 20;
+}
+.progress-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
