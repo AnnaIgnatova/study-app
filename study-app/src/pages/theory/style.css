@@ -1,0 +1,85 @@
+.theory {
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  padding-bottom: 50px;
+}
+.title-level {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.theory-title {
+  margin-bottom: 0;
+}
+.theory-subtitle {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: #616161;
+  margin-bottom: 10px;
+  display: block;
+}
+.theory-level {
+  display: flex;
+  align-items: center;
+}
+.theory-level span {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: #616161;
+  margin-right: 10px;
+}
+.theory-level-num {
+  width: 30px;
+  height: 30px;
+  background: #f1751c;
+  border-radius: 50%;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theory-container {
+  flex-direction: column;
+}
+.theory-line {
+  margin-top: 20px;
+  height: 0.5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  opacity: 0.5;
+  margin-bottom: 40px;
+}
+
+.theory-description {
+  overflow-y: scroll;
+  height: 300px;
+  padding-right: 40px;
+  margin-bottom: 30px;
+}
+.theory-description p {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 30px;
+}
+.theory-description img {
+  margin-bottom: 30px;
+  height: 300px;
+  object-fit: contain;
+}
+.theory-btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
