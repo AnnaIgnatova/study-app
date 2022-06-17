@@ -34,4 +34,9 @@ export const ruLang = {
     title: 'выберите интересующую тему',
     minutes: 'мин',
   },
+  theory: {
+    topics: 'темы',
+    examples: 'примеры заданий',
+    level: 'сложность урока'
+  }
 };

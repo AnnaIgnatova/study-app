@@ -1,15 +1,17 @@
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowBtn } from '../../components/arrowBtn';
 import { NavBlock } from '../main/NavBlock';
 import './style.css';
 
 export const Theory = () => {
+  const { t } = useTranslation();
   return (
     <div className="main">
       <div className="main-nav-container">
         <NavBlock />
         <Link to="/main">
-          <ArrowBtn text="темы" left={true} />
+          <ArrowBtn text={t('theory.topics')} left={true} />
         </Link>
       </div>
 
@@ -18,7 +20,7 @@ export const Theory = () => {
         <div className="title-level">
           <h2 className="main-title theory-title">Базовая структура HTML документа</h2>
           <div className="theory-level">
-            <span>сложность урока</span>
+            <span>{t('theory.level')}</span>
             <div className="theory-level-num">2</div>
           </div>
         </div>
@@ -44,7 +46,7 @@ export const Theory = () => {
           </p>
         </div>
         <Link to="/examples" className="theory-btn-container">
-          <ArrowBtn text="примеры заданий" right={true} />
+          <ArrowBtn text={t('theory.examples')} right={true} />
         </Link>
       </div>
     </div>

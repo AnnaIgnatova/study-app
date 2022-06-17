@@ -34,4 +34,9 @@ export const enLang = {
     title: 'Choose the topic you interested by',
     minutes: 'min',
   },
+  theory: {
+    topics: 'topics',
+    examples: 'examples',
+    level: 'level',
+  },
 };
