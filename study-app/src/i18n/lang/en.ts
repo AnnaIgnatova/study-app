@@ -39,4 +39,9 @@ export const enLang = {
     examples: 'examples',
     level: 'level',
   },
+  examples: {
+    title: 'task examples',
+    theory: 'theory',
+    test: 'testing',
+  },
 };

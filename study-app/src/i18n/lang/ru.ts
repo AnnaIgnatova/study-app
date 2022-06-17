@@ -37,6 +37,11 @@ export const ruLang = {
   theory: {
     topics: 'темы',
     examples: 'примеры заданий',
-    level: 'сложность урока'
-  }
+    level: 'сложность урока',
+  },
+  examples: {
+    title: 'примеры заданий',
+    theory: 'теория',
+    test: 'тест',
+  },
 };
