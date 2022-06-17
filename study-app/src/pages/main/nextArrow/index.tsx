@@ -8,12 +8,12 @@ export const NextArrow = (props: any) => {
         className={className}
         style={{
           ...style,
-          width: '50px',
-          height: '50px',
+          width: '60px',
+          height: '60px',
           objectFit: 'contain',
           transform: 'rotate(180deg)',
           position: 'absolute',
-          top: '275px',
+          top: '325px',
           right: '45%',
         }}
         onClick={onClick}

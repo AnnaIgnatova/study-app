@@ -23,4 +23,15 @@ export const enLang = {
     save: 'save',
     cancel: 'cancel',
   },
+  nav: {
+    study: 'study',
+    testing: 'testing',
+    createCourse: 'create course',
+    settings: 'settings',
+  },
+  main: {
+    search: 'Search',
+    title: 'Choose the topic you interested by',
+    minutes: 'min',
+  },
 };

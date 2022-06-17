@@ -8,11 +8,11 @@ export const PrevArrow = (props: any) => {
         className={className}
         style={{
           ...style,
-          width: '50px',
-          height: '50px',
+          width: '60px',
+          height: '60px',
           objectFit: 'contain',
           position: 'absolute',
-          top: '300px',
+          top: '350px',
           left: '40%',
         }}
         onClick={onClick}

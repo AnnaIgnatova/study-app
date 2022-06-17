@@ -23,4 +23,15 @@ export const ruLang = {
     save: 'сохранить',
     cancel: 'отмена',
   },
+  nav: {
+    study: 'обучение',
+    testing: 'тестирование',
+    createCourse: 'создать курс',
+    settings: 'настройки',
+  },
+  main: {
+    search: 'Поиск',
+    title: 'выберите интересующую тему',
+    minutes: 'мин',
+  },
 };

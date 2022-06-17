@@ -3,11 +3,19 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-  padding: 0 100px;
+  padding: 0 90px;
   font-family: 'Roboto', sans-serif;
 }
 .main > nav {
   width: 18%;
+}
+.main-nav-list {
+  padding: 0;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
 }
 .nav-link {
   display: flex;
@@ -40,7 +48,6 @@
   height: 30px;
   object-fit: contain;
   margin-right: 20px;
-  mix-blend-mode: overlay;
 }
 .nav-link-container {
   display: flex;

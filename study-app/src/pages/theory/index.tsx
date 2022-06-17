@@ -1,11 +1,18 @@
-import { FilledBtn } from '../../components/filledBtn';
+import { Link } from 'react-router-dom';
+import { ArrowBtn } from '../../components/arrowBtn';
 import { NavBlock } from '../main/NavBlock';
 import './style.css';
 
 export const Theory = () => {
   return (
     <div className="main">
-      <NavBlock />
+      <div className="main-nav-container">
+        <NavBlock />
+        <Link to="/main">
+          <ArrowBtn text="темы" left={true} />
+        </Link>
+      </div>
+
       <div className="tasks-container theory-container">
         <span className="theory-subtitle">Основы современной вёрстки</span>
         <div className="title-level">
@@ -36,9 +43,9 @@ export const Theory = () => {
             Записывается он следующим образом:
           </p>
         </div>
-        <div className="theory-btn-container">
-          <FilledBtn text="примеры заданий" right={true} />
-        </div>
+        <Link to="/examples" className="theory-btn-container">
+          <ArrowBtn text="примеры заданий" right={true} />
+        </Link>
       </div>
     </div>
   );

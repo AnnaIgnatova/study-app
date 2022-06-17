@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { TopicNav } from './nav';
 import './style.css';
 
@@ -11,12 +12,14 @@ export interface TopicCardProps {
 
 export const TopicCard = (props: TopicCardProps) => {
   const { title, img, progress, level, time } = props;
-
+  const { t } = useTranslation();
   return (
     <div className="topic-card" style={{ backgroundImage: `url(${img})` }}>
       <div className="topic-level-time">
         <div className="topic-level-num">{level}</div>
-        <div className="topic-time-num">{time} мин</div>
+        <div className="topic-time-num">
+          {time} {t('main.minutes')}
+        </div>
       </div>
       <div className="topic-card-title">{title}</div>
       <div className="progress-links">

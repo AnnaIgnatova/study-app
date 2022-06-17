@@ -24,6 +24,7 @@
   display: flex;
   align-items: center;
 }
+
 .theory-level span {
   font-weight: 700;
   font-size: 14px;
@@ -33,6 +34,7 @@
   margin-right: 10px;
 }
 .theory-level-num {
+  transition: 0.2s;
   width: 30px;
   height: 30px;
   background: #f1751c;
@@ -44,11 +46,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
-
+.theory-level-num:hover {
+  background-color: #f19c1c;
+}
 .theory-container {
   flex-direction: column;
 }
+
 .theory-line {
   margin-top: 20px;
   height: 0.5px;
@@ -60,9 +66,9 @@
 
 .theory-description {
   overflow-y: scroll;
-  height: 300px;
+  height: 400px;
   padding-right: 40px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 .theory-description p {
   font-weight: 300;
@@ -82,4 +88,20 @@
 .theory-btn-container {
   display: flex;
   justify-content: flex-end;
+  text-decoration: none;
+}
+.main-nav-container {
+  width: 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 650px;
+}
+
+.main-nav-container .filled-btn {
+  margin-right: 100px;
+  display: flex;
+}
+.main-nav-container a {
+  text-decoration: none;
 }
