@@ -21,7 +21,7 @@ export const Main = () => {
   };
   return (
     <div className="main">
-      <NavBlock />
+      <NavBlock route='main'/>
       <div className="tasks-container">
         <div className="main-search-container">
           <input type="search" className="main-search" placeholder={t('main.search')} />

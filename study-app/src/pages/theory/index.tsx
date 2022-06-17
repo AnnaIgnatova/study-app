@@ -9,7 +9,7 @@ export const Theory = () => {
   return (
     <div className="main">
       <div className="main-nav-container">
-        <NavBlock />
+        <NavBlock route="main" />
         <Link to="/main">
           <ArrowBtn text={t('theory.topics')} left={true} />
         </Link>

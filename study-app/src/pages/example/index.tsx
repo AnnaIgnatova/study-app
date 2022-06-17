@@ -9,12 +9,11 @@ export const Example = () => {
   return (
     <div className="main">
       <div className="main-nav-container">
-        <NavBlock />
+        <NavBlock route="main" />
         <Link to="/theory">
           <ArrowBtn text={t('examples.theory')} left={true} />
         </Link>
       </div>
-
       <div className="tasks-container theory-container">
         <div className="title-level">
           <h2 className="main-title theory-title">{t('examples.title')}</h2>
