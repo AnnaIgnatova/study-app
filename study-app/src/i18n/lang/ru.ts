@@ -55,4 +55,13 @@ export const ruLang = {
     separate: 'из',
     subtitle: 'тест пройден',
   },
+  practise: {
+    title: 'практика',
+    testing: 'тестирование',
+    checking: 'проверка',
+  },
+  modalPractise: {
+    title: 'задание выполнено',
+    toMain: 'на главную',
+  },
 };

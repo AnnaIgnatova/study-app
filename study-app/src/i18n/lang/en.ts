@@ -53,6 +53,15 @@ export const enLang = {
   modalAnswers: {
     title: 'your points',
     separate: '/',
-    subtitle: 'you have pass the test',
+    subtitle: 'you have passed the test',
+  },
+  practise: {
+    title: 'practise',
+    testing: 'testing',
+    checking: 'check',
+  },
+  modalPractise: {
+    title: 'you have completed the task',
+    toMain: 'go to main',
   },
 };
