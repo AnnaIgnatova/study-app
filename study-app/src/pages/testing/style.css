@@ -1,0 +1,28 @@
+.testing-container {
+  padding-top: 80px;
+}
+
+.testing-title {
+  margin-bottom: 30px;
+}
+.testing-container .topic-level-time {
+  justify-content: flex-end;
+}
+.testing-container .topic-card-title {
+  margin-top: 120px;
+}
+.testing-types {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 900px;
+  margin: auto;
+  margin-top: 100px;
+}
+.testing-types a {
+  color: #000;
+  transition: 0.2s;
+}
+.testing-types a:hover {
+  transform: scale(1.05);
+}

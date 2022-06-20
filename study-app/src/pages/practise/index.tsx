@@ -15,7 +15,7 @@ export const Practise = () => {
       <div className="main">
         <div className="main-nav-container">
           <NavBlock route="main" />
-          <Link to="/testingTask">
+          <Link to="/testing-task">
             <ArrowBtn text={t('practise.testing')} left={true} />
           </Link>
         </div>

@@ -4,8 +4,8 @@
   background-size: cover;
   border-radius: 20px;
   background-position: center;
-  padding: 20px;
   font-family: 'Roboto', sans-serif;
+  position: relative;
 }
 
 .topic-level-num {
@@ -111,4 +111,14 @@
 }
 .topic-links > li:hover {
   transform: scale(1.1);
+}
+.darken-container {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  border-radius: 20px;
 }

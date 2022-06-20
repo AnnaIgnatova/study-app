@@ -5,29 +5,34 @@ import './style.css';
 export interface TopicCardProps {
   title: string;
   img: string;
-  progress: number;
-  level: number;
+  progress?: number;
+  level?: number;
   time: number;
+  type?: string;
 }
 
 export const TopicCard = (props: TopicCardProps) => {
-  const { title, img, progress, level, time } = props;
+  const { title, img, progress, level, time, type } = props;
   const { t } = useTranslation();
   return (
     <div className="topic-card" style={{ backgroundImage: `url(${img})` }}>
-      <div className="topic-level-time">
-        <div className="topic-level-num">{level}</div>
-        <div className="topic-time-num">
-          {time} {t('main.minutes')}
+      <div className="darken-container">
+        <div className="topic-level-time">
+          {!type && <div className="topic-level-num">{level}</div>}
+          <div className="topic-time-num">
+            {time} {t('main.minutes')}
+          </div>
         </div>
-      </div>
-      <div className="topic-card-title">{title}</div>
-      <div className="progress-links">
-        <div className="topic-progress">
-          <div className="topic-progress-scale"></div>
-          <span>{progress}%</span>
-        </div>
-        <TopicNav />
+        <div className="topic-card-title">{title}</div>
+        {!type && (
+          <div className="progress-links">
+            <div className="topic-progress">
+              <div className="topic-progress-scale"></div>
+              <span>{progress}%</span>
+            </div>
+            <TopicNav />
+          </div>
+        )}
       </div>
     </div>
   );

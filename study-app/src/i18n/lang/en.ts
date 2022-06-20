@@ -64,4 +64,9 @@ export const enLang = {
     title: 'you have completed the task',
     toMain: 'go to main',
   },
+  testing: {
+    title: 'Which type of testing you want to pass?',
+    byTopics: 'Testing by topics',
+    general: 'General testing',
+  },
 };
