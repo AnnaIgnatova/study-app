@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import './style.css';
 
 export interface ModalAnswersProps {
@@ -5,6 +6,7 @@ export interface ModalAnswersProps {
 }
 
 export const ModalCheckingAnswers = (props: ModalAnswersProps) => {
+  const { t } = useTranslation();
   const { setIsOpen } = props;
   const closeModal = () => {
     setIsOpen(false);
@@ -21,10 +23,10 @@ export const ModalCheckingAnswers = (props: ModalAnswersProps) => {
         <div className="close-modal" onClick={closeModal}></div>
         <div className="modal-answers-info">
           <div className="modal-title">
-            ваш балл <span>6 из 10</span>
+            {t('modalAnswers.title')} <span>6 {t('modalAnswers.separate')} 10</span>
           </div>
           <img src="./assets/congratulation.png" alt="congratulation" />
-          <span className="modal-answers-subtitle">тест пройден</span>
+          <span className="modal-answers-subtitle">{t('modalAnswers.subtitle')}</span>
         </div>
       </div>
     </div>

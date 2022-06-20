@@ -44,4 +44,15 @@ export const ruLang = {
     theory: 'теория',
     test: 'тест',
   },
+  testingTask: {
+    title: 'тестирование',
+    examples: 'примеры',
+    checking: 'проверка',
+    practise: 'практика',
+  },
+  modalAnswers: {
+    title: 'ваш балл',
+    separate: 'из',
+    subtitle: 'тест пройден',
+  },
 };

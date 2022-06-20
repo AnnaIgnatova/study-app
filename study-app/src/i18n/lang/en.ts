@@ -44,4 +44,15 @@ export const enLang = {
     theory: 'theory',
     test: 'testing',
   },
+  testingTask: {
+    title: 'testing',
+    examples: 'examples',
+    checking: 'check',
+    practise: 'practise',
+  },
+  modalAnswers: {
+    title: 'your points',
+    separate: '/',
+    subtitle: 'you have pass the test',
+  },
 };

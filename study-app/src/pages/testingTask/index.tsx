@@ -18,12 +18,12 @@ export const TestingTask = () => {
         <div className="main-nav-container">
           <NavBlock route="testing" />
           <Link to="/examples">
-            <ArrowBtn text="примеры" left={true} />
+            <ArrowBtn text={t('testingTask.examples')} left={true} />
           </Link>
         </div>
         <div className="tasks-container theory-container">
           <div className="title-level">
-            <h2 className="main-title theory-title">Тестирование</h2>
+            <h2 className="main-title theory-title">{t('testingTask.title')}</h2>
             <div className="theory-level">
               <span>{t('theory.level')}</span>
               <div className="theory-level-num">2</div>
@@ -58,11 +58,11 @@ export const TestingTask = () => {
                 setCheckAnswers(true);
               }}
             >
-              <ArrowBtn text="проверка" right={true} />
+              <ArrowBtn text={t('testingTask.checking')} right={true} />
             </div>
           ) : (
             <Link to="/practise" className="theory-btn-container">
-              <ArrowBtn text="практика" right={true} />
+              <ArrowBtn text={t('testingTask.practise')} right={true} />
             </Link>
           )}
         </div>
