@@ -1,11 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowBtn } from '../../components/arrowBtn';
+import { changeTest } from '../../features/testing/testingSlice';
+import { useAppDispatch } from '../../store';
 import { NavBlock } from '../main/NavBlock';
 import './style.css';
 
 export const Example = () => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
   return (
     <div className="main">
       <div className="main-nav-container">
@@ -40,7 +43,13 @@ export const Example = () => {
             <a href="https://codepen.io">CodePen</a>.
           </iframe>
         </div>
-        <Link to="/testing-task" className="theory-btn-container">
+        <Link
+          to="/testing-task"
+          className="theory-btn-container"
+          onClick={() => {
+            dispatch(changeTest('by-task'));
+          }}
+        >
           <ArrowBtn text={t('examples.test')} right={true} />
         </Link>
       </div>

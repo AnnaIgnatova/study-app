@@ -69,4 +69,8 @@ export const ruLang = {
     byTopics: 'Тестирование по темам',
     general: 'Общее тестирование',
   },
+  testingByTopics: {
+    title: 'Выберите тему тестирования',
+    backBtn: 'выбор тестирования',
+  },
 };

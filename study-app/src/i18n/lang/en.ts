@@ -69,4 +69,8 @@ export const enLang = {
     byTopics: 'Testing by topics',
     general: 'General testing',
   },
+  testingByTopics: {
+    title: 'Choose the topic of testing',
+    backBtn: 'choose testing',
+  },
 };

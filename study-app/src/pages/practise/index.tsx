@@ -5,17 +5,25 @@ import { Link } from 'react-router-dom';
 import { ArrowBtn } from '../../components/arrowBtn';
 import { useState } from 'react';
 import { ModalPractise } from './ModalPractise';
+import { useAppDispatch } from '../../store';
+import { changeTest } from '../../features/testing/testingSlice';
 
 export const Practise = () => {
   const { t } = useTranslation();
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
   return (
     <>
       {isModalOpen && <ModalPractise setModalOpen={setModalOpen} />}
       <div className="main">
         <div className="main-nav-container">
           <NavBlock route="main" />
-          <Link to="/testing-task">
+          <Link
+            to="/testing-task"
+            onClick={() => {
+              dispatch(changeTest('by-task'));
+            }}
+          >
             <ArrowBtn text={t('practise.testing')} left={true} />
           </Link>
         </div>

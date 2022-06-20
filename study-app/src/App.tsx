@@ -9,6 +9,7 @@ import { Practise } from './pages/practise';
 import { Settings } from './pages/settings';
 import { Testing } from './pages/testing';
 import { TestingTask } from './pages/testingTask';
+import { TestingTopics } from './pages/testingTopics';
 import { Theory } from './pages/theory';
 import { User } from './pages/user';
 import { Welcome } from './pages/welcome';
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/examples" element={<Example />}></Route>
         <Route path="/practise" element={<Practise />}></Route>
         <Route path="/create-course" element={<CreateCourse />}></Route>
+        <Route path="/testing-topics" element={<TestingTopics />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </RoutesWrapper>
     </div>
