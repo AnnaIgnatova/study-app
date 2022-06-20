@@ -10,6 +10,7 @@ import { TestBlock } from './testBlock';
 export const TestingTask = () => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [checkAnswers, setCheckAnswers] = useState<boolean>(false);
   return (
     <>
       {isOpen && <ModalCheckingAnswers setIsOpen={setIsOpen} />}
@@ -36,6 +37,8 @@ export const TestingTask = () => {
               answer_2="<table> <tr> <td>"
               answer_3="<ul> <li> <tr> <td>"
               index={1}
+              right={1}
+              checkAnswers={checkAnswers}
             />
             <TestBlock
               title={`О чем говорит следующая запись: <form action="url" method="POST">?`}
@@ -43,16 +46,25 @@ export const TestingTask = () => {
               answer_2="Создается форма, при заполнении которой вводимые данные не будут отображаться"
               answer_3="Создается форма, которая будет служить для внесения информации, представленной в виде ссылки (URL)"
               index={2}
+              right={2}
+              checkAnswers={checkAnswers}
             />
           </div>
-          <div
-            className="theory-btn-container"
-            onClick={() => {
-              setIsOpen(true);
-            }}
-          >
-            <ArrowBtn text="проверка" right={true} />
-          </div>
+          {!checkAnswers ? (
+            <div
+              className="theory-btn-container"
+              onClick={() => {
+                setIsOpen(true);
+                setCheckAnswers(true);
+              }}
+            >
+              <ArrowBtn text="проверка" right={true} />
+            </div>
+          ) : (
+            <Link to="/practise" className="theory-btn-container">
+              <ArrowBtn text="практика" right={true} />
+            </Link>
+          )}
         </div>
       </div>
     </>

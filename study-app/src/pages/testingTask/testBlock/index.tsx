@@ -7,6 +7,8 @@ export interface TestBlockProps {
   answer_2: string;
   answer_3: string;
   index: number;
+  right: number;
+  checkAnswers: boolean;
 }
 
 export interface Answers {
@@ -22,7 +24,7 @@ const resetAnswers = {
 };
 
 export const TestBlock = (props: TestBlockProps) => {
-  const { title, answer_1, answer_2, answer_3, index } = props;
+  const { title, answer_1, answer_2, answer_3, index, right, checkAnswers } = props;
   const [answers, setAnswers] = useState<Answers>(resetAnswers);
 
   const chooseAnswer = (type: string) => {
@@ -43,18 +45,24 @@ export const TestBlock = (props: TestBlockProps) => {
           answerType={answers.answer_1}
           chooseAnswer={chooseAnswer}
           index={1}
+          right={right}
+          checkAnswers={checkAnswers}
         />
         <TestAnswer
           answer={answer_2}
           answerType={answers.answer_2}
           chooseAnswer={chooseAnswer}
           index={2}
+          right={right}
+          checkAnswers={checkAnswers}
         />
         <TestAnswer
           answer={answer_3}
           answerType={answers.answer_3}
           chooseAnswer={chooseAnswer}
           index={3}
+          right={right}
+          checkAnswers={checkAnswers}
         />
       </div>
     </div>

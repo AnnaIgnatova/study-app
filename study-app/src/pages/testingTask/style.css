@@ -65,3 +65,13 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
+.right-answer {
+  background-image: url(./../../assets/right.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.wrong-answer {
+  background-image: url(./../../assets/wrong.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
