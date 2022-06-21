@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 import { ArrowBtn } from '../../components/arrowBtn';
 import { useState } from 'react';
 import { ModalPractise } from './ModalPractise';
-import { useAppDispatch } from '../../store';
-import { changeTest } from '../../features/testing/testingSlice';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { changePractise, changeTest } from '../../features/testing/testingSlice';
 
 export const Practise = () => {
   const { t } = useTranslation();
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
+  const { isPracticeChecked } = useAppSelector((state) => state.testingReducer);
   const dispatch = useAppDispatch();
   return (
     <>
@@ -57,14 +58,27 @@ export const Practise = () => {
               <a href="https://codepen.io">CodePen</a>.
             </iframe>
           </div>
-          <div
-            className="theory-btn-container"
-            onClick={() => {
-              setModalOpen(true);
-            }}
-          >
-            <ArrowBtn text={t('practise.checking')} right={true} />
-          </div>
+          {!isPracticeChecked ? (
+            <div
+              className="theory-btn-container"
+              onClick={() => {
+                setModalOpen(true);
+                dispatch(changePractise(true));
+              }}
+            >
+              <ArrowBtn text={t('practise.checking')} right={true} />
+            </div>
+          ) : (
+            <Link
+              to="/main"
+              className="theory-btn-container"
+              onClick={() => {
+                dispatch(changePractise(false));
+              }}
+            >
+              <ArrowBtn text={t('modalPractise.toMain')} right={true} />
+            </Link>
+          )}
         </div>
       </div>
     </>
