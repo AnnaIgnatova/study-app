@@ -1,0 +1,60 @@
+.create-course-container h2 {
+  margin-bottom: 25px;
+}
+.create-course-container {
+  font-family: 'Roboto', sans-serif;
+}
+.create-course-block {
+  margin-bottom: 40px;
+}
+.create-course-block h3 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.create-course-block input {
+  height: 50px;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+}
+.create-course-block input[type='text'] {
+  width: 40%;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.44);
+  padding-left: 15px;
+}
+.create-course-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.create-course-block input[type='number'] {
+  border: 1px solid rgba(0, 0, 0, 0.44);
+  border-radius: 10px;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 25px;
+}
+.create-course-block textarea {
+  border: 1px solid rgba(0, 0, 0, 0.44);
+  border-radius: 10px;
+  width: 40%;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+}
+.create-course-container button:hover {
+  color: #fb6d3a;
+}

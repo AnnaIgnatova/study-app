@@ -84,4 +84,23 @@ export const enLang = {
     password: 'Password',
     signUp: 'create account',
   },
+  createCourse: {
+    title: 'Create course',
+    name: 'Type the course name',
+    nameInput: 'html markup language',
+    level: 'select the difficulty of the course (from 1 to 5)',
+    time: 'select the average time to complete the course (in minutes)',
+    theory: 'add theory material',
+    theoryInput:
+      'Just as a theater begins with a hanger, any HTML document begins with a basic structure. It includes the tags found in any HTML file. These tags and service information are needed by the browser to correctly display information. Lets take a look at the basic structure of any HTML document:',
+    examples: 'add examples on theoretical material',
+    examplesInput: 'examples',
+    testing: 'add material for testing',
+    testingInput: 'testing',
+    practise: 'add practice material',
+    practiseInput: 'practise',
+    img: 'upload background image',
+    createBtn: 'create',
+    courseCreated: 'course created',
+  },
 };

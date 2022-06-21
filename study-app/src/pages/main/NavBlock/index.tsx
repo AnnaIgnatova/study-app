@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { changeCourseCreated } from '../../../features/modal/modalSlice';
+import { useAppDispatch, useAppSelector } from '../../../store';
 
 export interface NavBlockProps {
   route: string;
@@ -7,6 +9,8 @@ export interface NavBlockProps {
 
 export const NavBlock = (props: NavBlockProps) => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+  const { isCourseCreated } = useAppSelector((state) => state.modalReducer);
   const { route } = props;
   return (
     <nav>
@@ -41,7 +45,13 @@ export const NavBlock = (props: NavBlockProps) => {
             alt="create icon"
             className="nav-link-icon"
           />
-          <Link to="/create-course" className="nav-link">
+          <Link
+            to="/create-course"
+            className="nav-link"
+            onClick={() => {
+              if (isCourseCreated) dispatch(changeCourseCreated());
+            }}
+          >
             {t('nav.createCourse')}
           </Link>
         </li>
