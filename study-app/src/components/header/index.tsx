@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
+import { changeSignInModalOpen } from '../../features/modal/modalSlice';
+import { useAppDispatch } from '../../store';
 import { FilledBtn } from '../filledBtn';
 import { Lang } from '../lang';
 import { NotFilledBtn } from '../notFilledBtn';
@@ -9,13 +11,18 @@ import './style.css';
 export const Header = () => {
   const { t } = useTranslation();
   const location = useLocation();
+  const dispatch = useAppDispatch();
+
+  const toggleSignInModal = () => {
+    dispatch(changeSignInModalOpen());
+  };
 
   return (
     <div className="header">
       {location.pathname === '/' && (
         <div className="header-container">
           <FilledBtn text={t('header.signUpBtn')} />
-          <NotFilledBtn text={t('header.signInBtn')} />
+          <NotFilledBtn text={t('header.signInBtn')} toggleModal={toggleSignInModal} />
         </div>
       )}
       {location.pathname !== '/' && (

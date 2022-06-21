@@ -3,14 +3,16 @@ import { combineReducers } from 'redux';
 import { useSelector, useDispatch, TypedUseSelectorHook } from 'react-redux';
 import themeReducer from './../features/theme/themeSlice';
 import langReducer from './../features/lang/langSlice';
-import userReducer from './../features/user/userSlice'
+import userReducer from './../features/user/userSlice';
 import testingReducer from '../features/testing/testingSlice';
+import modalReducer from '../features/modal/modalSlice';
 
 const rootReducer = combineReducers({
   themeReducer,
   langReducer,
   userReducer,
   testingReducer,
+  modalReducer,
 });
 
 export const store = () => {

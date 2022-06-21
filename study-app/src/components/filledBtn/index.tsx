@@ -2,9 +2,14 @@ import './style.css';
 
 export interface BtnProps {
   text: string;
+  toggleModal?: () => void;
 }
 
 export const FilledBtn = (props: BtnProps) => {
-  const { text } = props;
-  return <button className="filled-btn">{text}</button>;
+  const { text, toggleModal } = props;
+  return (
+    <button className="filled-btn" onClick={toggleModal}>
+      {text}
+    </button>
+  );
 };
