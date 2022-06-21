@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
-import { changeSignInModalOpen } from '../../features/modal/modalSlice';
+import { changeSignInModalOpen, changeSignUpModalOpen } from '../../features/modal/modalSlice';
 import { useAppDispatch } from '../../store';
 import { FilledBtn } from '../filledBtn';
 import { Lang } from '../lang';
@@ -17,11 +17,15 @@ export const Header = () => {
     dispatch(changeSignInModalOpen());
   };
 
+  const toggleSignUpModal = () => {
+    dispatch(changeSignUpModalOpen());
+  };
+
   return (
     <div className="header">
       {location.pathname === '/' && (
         <div className="header-container">
-          <FilledBtn text={t('header.signUpBtn')} />
+          <FilledBtn text={t('header.signUpBtn')} toggleModal={toggleSignUpModal} />
           <NotFilledBtn text={t('header.signInBtn')} toggleModal={toggleSignInModal} />
         </div>
       )}
