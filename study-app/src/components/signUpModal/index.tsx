@@ -24,11 +24,11 @@ export const ModalSignUp = () => {
       <div className="modal-answers">
         <div className="close-modal" onClick={toggleSignUpModal}></div>
         <div className="modal-answers-info modal-sign-in">
-          <h2 className="modal-title">Регистрация</h2>
-          <input type="text" className="modal-input" placeholder="Имя" />
+          <h2 className="modal-title">{t('modalSignUp.title')}</h2>
+          <input type="text" className="modal-input" placeholder={t('modalSignUp.name')} />
           <input type="text" className="modal-input" placeholder="E-mail" />
-          <input type="password" className="modal-input" placeholder="Пароль" />
-          <FilledBtn text="Создать аккаунт" />
+          <input type="password" className="modal-input" placeholder={t('modalSignUp.password')} />
+          <FilledBtn text={t('modalSignUp.signUp')} />
         </div>
       </div>
     </div>

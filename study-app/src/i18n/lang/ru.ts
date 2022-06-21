@@ -73,4 +73,15 @@ export const ruLang = {
     title: 'Выберите тему тестирования',
     backBtn: 'выбор тестирования',
   },
+  modalSignIn: {
+    title: 'вход',
+    password: 'Пароль',
+    signIn: 'войти',
+  },
+  modalSignUp: {
+    title: 'регистрация',
+    name: 'Имя',
+    password: 'Пароль',
+    signUp: 'создать аккаунт',
+  },
 };

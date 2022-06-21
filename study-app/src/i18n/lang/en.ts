@@ -73,4 +73,15 @@ export const enLang = {
     title: 'Choose the topic of testing',
     backBtn: 'choose testing',
   },
+  modalSignIn: {
+    title: 'sign in',
+    password: 'Password',
+    signIn: 'sign in',
+  },
+  modalSignUp: {
+    title: 'registration',
+    name: 'Name',
+    password: 'Password',
+    signUp: 'create account',
+  },
 };
