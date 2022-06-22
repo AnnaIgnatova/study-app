@@ -10,6 +10,7 @@ export const Example = () => {
   const { t } = useTranslation();
   const { courseById } = useAppSelector((state) => state.courseReducer);
   const dispatch = useAppDispatch();
+  const { examples, level } = courseById;
 
   const getInfo = () => {
     return JSON.parse(courseById.examples).map((item: any) => {
@@ -52,11 +53,11 @@ export const Example = () => {
           <h2 className="main-title theory-title">{t('examples.title')}</h2>
           <div className="theory-level">
             <span>{t('theory.level')}</span>
-            <div className="theory-level-num">{courseById.level}</div>
+            <div className="theory-level-num">{level}</div>
           </div>
         </div>
         <hr className="theory-line" />
-        <div className="theory-description">{courseById.examples ? getInfo() : ''}</div>
+        <div className="theory-description">{examples ? getInfo() : ''}</div>
         <Link
           to="/testing-task"
           className="theory-btn-container"

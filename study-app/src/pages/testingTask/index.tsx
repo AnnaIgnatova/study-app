@@ -12,7 +12,9 @@ export const TestingTask = () => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [checkAnswers, setCheckAnswers] = useState<boolean>(false);
+  const { courseById } = useAppSelector((state) => state.courseReducer);
   const { type } = useAppSelector((state) => state.testingReducer);
+
   return (
     <>
       {isOpen && <ModalCheckingAnswers setIsOpen={setIsOpen} />}
@@ -31,30 +33,25 @@ export const TestingTask = () => {
             {type === 'by-task' && (
               <div className="theory-level">
                 <span>{t('theory.level')}</span>
-                <div className="theory-level-num">2</div>
+                <div className="theory-level-num">{courseById.level}</div>
               </div>
             )}
           </div>
           <hr className="theory-line" />
           <div className="theory-description">
-            <TestBlock
-              title="Какие из перечисленных тэгов относятся к созданию таблицы?"
-              answer_1="<header> <body> <footer>"
-              answer_2="<table> <tr> <td>"
-              answer_3="<ul> <li> <tr> <td>"
-              index={1}
-              right={1}
-              checkAnswers={checkAnswers}
-            />
-            <TestBlock
-              title={`О чем говорит следующая запись: <form action="url" method="POST">?`}
-              answer_1="Создается форма, при заполнении которой вводимые данные будут отображаться"
-              answer_2="Создается форма, при заполнении которой вводимые данные не будут отображаться"
-              answer_3="Создается форма, которая будет служить для внесения информации, представленной в виде ссылки (URL)"
-              index={2}
-              right={2}
-              checkAnswers={checkAnswers}
-            />
+            {courseById.testing
+              ? JSON.parse(courseById.testing).map((item: any, i: number) => {
+                  const data = { ...item };
+                  return (
+                    <TestBlock
+                      data={data}
+                      index={i + 1}
+                      checkAnswers={checkAnswers}
+                      key={data.question}
+                    />
+                  );
+                })
+              : ''}
           </div>
           {!checkAnswers ? (
             <div

@@ -12,7 +12,11 @@ export const Practise = () => {
   const { t } = useTranslation();
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const { isPracticeChecked } = useAppSelector((state) => state.testingReducer);
+  const { courseById } = useAppSelector((state) => state.courseReducer);
   const dispatch = useAppDispatch();
+  const { name, subtitle, level } = courseById;
+  const { title, img } = JSON.parse(courseById.practise);
+
   return (
     <>
       {isModalOpen && <ModalPractise setModalOpen={setModalOpen} />}
@@ -29,22 +33,18 @@ export const Practise = () => {
           </Link>
         </div>
         <div className="tasks-container theory-container">
-          <span className="theory-subtitle">Основы современной вёрстки</span>
+          <span className="theory-subtitle">{name}</span>
           <div className="title-level">
-            <h2 className="main-title theory-title">Базовая структура HTML документа</h2>
+            <h2 className="main-title theory-title">{subtitle}</h2>
             <div className="theory-level">
               <span>{t('theory.level')}</span>
-              <div className="theory-level-num">2</div>
+              <div className="theory-level-num">{level}</div>
             </div>
           </div>
           <hr className="theory-line" />
           <div className="theory-description">
-            <div className="practise-title">
-              Сделайте страницу, как показано на рис. 1. Размеры всех частей заданы в пикселах и не
-              меняются в процессе масштабирования окна. Для каждой батарейки постарайтесь обойтись
-              одним элементом.
-            </div>
-            <img src="./assets/example-practise.png" alt="example" className="practise-img" />
+            <div className="practise-title">{title}</div>
+            <img src={img} alt="example" className="practise-img" />
             <iframe
               height="300"
               style={{ width: '100%' }}
@@ -52,11 +52,7 @@ export const Practise = () => {
               title="Untitled"
               src="https://codepen.io/annaignatova/embed/rNJdMXP?default-tab=html%2Cresult&editable=true"
               loading="lazy"
-            >
-              See the Pen <a href="https://codepen.io/annaignatova/pen/rNJdMXP">Untitled</a> by Anna
-              (<a href="https://codepen.io/annaignatova">@annaignatova</a>) on{' '}
-              <a href="https://codepen.io">CodePen</a>.
-            </iframe>
+            ></iframe>
           </div>
           {!isPracticeChecked ? (
             <div

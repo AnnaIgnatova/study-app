@@ -1,14 +1,14 @@
 export interface TestAnswerProps {
   answer: string;
-  answerType: boolean;
+  answerType: any;
   chooseAnswer: (type: string) => void;
-  index: number;
-  right: number;
+  right: string;
   checkAnswers: boolean;
+  index: number;
 }
 
 export const TestAnswer = (props: TestAnswerProps) => {
-  const { answer, chooseAnswer, answerType, index, checkAnswers, right } = props;
+  const { answer, chooseAnswer, answerType, checkAnswers, right, index } = props;
 
   return (
     <div className="test-block-answer">
@@ -16,9 +16,9 @@ export const TestAnswer = (props: TestAnswerProps) => {
         className={`test-block-answer-input ${
           answerType && !checkAnswers ? 'choosen-answer' : ''
         } ${
-          checkAnswers && right === index
+          checkAnswers && right === answer
             ? 'right-answer'
-            : checkAnswers && right !== index && answerType
+            : checkAnswers && right !== answer && answerType
             ? 'wrong-answer'
             : ''
         }`}

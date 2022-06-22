@@ -8,6 +8,25 @@ import './style.css';
 export const Theory = () => {
   const { courseById } = useAppSelector((state) => state.courseReducer);
   const { t } = useTranslation();
+  const { name, level, theory, subtitle } = courseById;
+
+  const getInfo = () => {
+    return JSON.parse(theory).map((item: any) => {
+      switch (Object.keys(item)[0]) {
+        case 'text': {
+          return <p>{item['text']}</p>;
+        }
+        case 'title': {
+          return <h3>{item['title']}</h3>;
+        }
+        case 'img': {
+          return <img src={item['img']} alt="example" />;
+        }
+        default:
+          return '';
+      }
+    });
+  };
 
   return (
     <div className="main">
@@ -19,34 +38,16 @@ export const Theory = () => {
       </div>
 
       <div className="tasks-container theory-container">
-        <span className="theory-subtitle">{courseById.subtitle}</span>
+        <span className="theory-subtitle">{subtitle}</span>
         <div className="title-level">
-          <h2 className="main-title theory-title">{courseById.name}</h2>
+          <h2 className="main-title theory-title">{name}</h2>
           <div className="theory-level">
             <span>{t('theory.level')}</span>
-            <div className="theory-level-num">{courseById.level}</div>
+            <div className="theory-level-num">{level}</div>
           </div>
         </div>
         <hr className="theory-line" />
-        <div className="theory-description">
-          {courseById.theory
-            ? JSON.parse(courseById.theory).map((item: any) => {
-                switch (Object.keys(item)[0]) {
-                  case 'text': {
-                    return <p>{item['text']}</p>;
-                  }
-                  case 'title': {
-                    return <h3>{item['title']}</h3>;
-                  }
-                  case 'img': {
-                    return <img src={item['img']} alt="example" />;
-                  }
-                  default:
-                    return '';
-                }
-              })
-            : ''}
-        </div>
+        <div className="theory-description">{theory ? getInfo() : ''}</div>
         <Link to="/examples" className="theory-btn-container">
           <ArrowBtn text={t('theory.examples')} right={true} />
         </Link>
