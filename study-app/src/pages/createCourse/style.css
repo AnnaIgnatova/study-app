@@ -58,3 +58,24 @@
 .create-course-container button:hover {
   color: #fb6d3a;
 }
+.course-add-field {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.course-add-field select {
+  height: 50px;
+  width: 100px;
+  padding-left: 15px;
+  text-transform: uppercase;
+  margin-left: 25px;
+  border-radius: 10px;
+}
+.create-course-block button {
+  color: #fb6d3a;
+  margin-top: 20px;
+}
+.create-course-block button:hover {
+  color: #fff;
+}

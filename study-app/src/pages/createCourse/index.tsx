@@ -8,12 +8,52 @@ import { useAppDispatch, useAppSelector } from '../../store';
 import { Link } from 'react-router-dom';
 import { ArrowBtn } from '../../components/arrowBtn';
 import { changeCourseCreated } from '../../features/modal/modalSlice';
+import ICourseData from '../../types/course.type';
+import { NotFilledBtn } from '../../components/notFilledBtn';
+import { CreateTheoryContainer } from './createTheoryContainer';
+
+const defaultCourseInfo = {
+  name: '',
+  subtitle: '',
+  level: 0,
+  time: 0,
+  theory: '',
+  practise: '',
+  testing: '',
+  examples: '',
+  img: '',
+};
 
 export const CreateCourse = () => {
   const { t } = useTranslation();
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const { isCourseCreated } = useAppSelector((state) => state.modalReducer);
+  const [courseData, setCourseData] = useState<ICourseData>({
+    ...defaultCourseInfo,
+  });
+  const [theoryInfo, setTheoryInfo] = useState<any>({ 0: { title: '' } });
+  const [practiseInfo, setPracriseInfo] = useState<any>({});
+  const [examplesInfo, setExamplesInfo] = useState<any>({});
+
+  const createTheoryBlock = (data: any, i: any) => {
+    setTheoryInfo((state: any) => {
+      return {
+        ...state,
+        [i]: data,
+      };
+    });
+  };
+
+  const addCreateTheoryBlock = () => {
+    setTheoryInfo((state: any) => {
+      return {
+        ...state,
+        [Object.keys(theoryInfo).length]: { title: '' },
+      };
+    });
+  };
+
   return (
     <>
       {isModalOpen && <ModalCreateCourse setModalOpen={setModalOpen} />}
@@ -25,7 +65,18 @@ export const CreateCourse = () => {
           <div className="theory-description">
             <div className="create-course-block">
               <h3>{t('createCourse.name')}</h3>
-              <input type="text" placeholder={t('createCourse.nameInput')} />
+              <input
+                type="text"
+                placeholder={t('createCourse.nameInput')}
+                onInput={(e) => {
+                  setCourseData((state) => {
+                    return {
+                      ...state,
+                      name: (e.target as HTMLInputElement).value,
+                    };
+                  });
+                }}
+              />
             </div>
             <div className="create-course-wrapper">
               <div className="create-course-block">
@@ -39,7 +90,11 @@ export const CreateCourse = () => {
             </div>
             <div className="create-course-block">
               <h3>{t('createCourse.theory')}</h3>
-              <textarea placeholder={t('createCourse.theoryInput')} rows={10}></textarea>
+              {theoryInfo &&
+                Object.values(theoryInfo).map((item, i) => (
+                  <CreateTheoryContainer createTheoryBlock={createTheoryBlock} i={i} item={item} />
+                ))}
+              <NotFilledBtn text="добавить" toggleModal={addCreateTheoryBlock} />
             </div>
             <div className="create-course-block">
               <h3>{t('createCourse.examples')}</h3>
