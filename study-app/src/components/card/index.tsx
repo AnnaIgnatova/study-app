@@ -1,8 +1,11 @@
 import { useTranslation } from 'react-i18next';
+import { getCourseById, getCourseDataById } from '../../features/courses/courseSlice';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { TopicNav } from './nav';
 import './style.css';
 
 export interface TopicCardProps {
+  id?: string;
   title: string;
   img: string;
   progress?: number;
@@ -12,10 +15,17 @@ export interface TopicCardProps {
 }
 
 export const TopicCard = (props: TopicCardProps) => {
-  const { title, img, progress, level, time, type } = props;
+  const { title, img, progress, level, time, type, id = '' } = props;
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
+
+  const getCardData = () => {
+    if (!type) {
+      dispatch(getCourseDataById(id));
+    }
+  };
   return (
-    <div className="topic-card" style={{ backgroundImage: `url(${img})` }}>
+    <div className="topic-card" style={{ backgroundImage: `url(${img})` }} onClick={getCardData}>
       <div className="darken-container">
         <div className="topic-level-time">
           {!type && <div className="topic-level-num">{level}</div>}

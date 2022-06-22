@@ -7,9 +7,14 @@ import 'slick-carousel/slick/slick-theme.css';
 import { NextArrow } from './nextArrow';
 import { PrevArrow } from './prevArrow';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { useEffect } from 'react';
+import { getCoursesData } from '../../features/courses/courseSlice';
 
 export const Main = () => {
   const { t } = useTranslation();
+  const { courses } = useAppSelector((state) => state.courseReducer);
+  const dispatch = useAppDispatch();
   const settings = {
     dots: false,
     infinite: true,
@@ -19,50 +24,30 @@ export const Main = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
+
+  useEffect(() => {
+    dispatch(getCoursesData());
+  }, []);
+
   return (
     <div className="main">
-      <NavBlock route='main'/>
+      <NavBlock route="main" />
       <div className="tasks-container">
         <div className="main-search-container">
           <input type="search" className="main-search" placeholder={t('main.search')} />
         </div>
         <h2 className="main-title">{t('main.title')}</h2>
         <Slider {...settings}>
-          <TopicCard
-            title="Структура HTML документа"
-            level={2}
-            progress={55}
-            time={60}
-            img="./assets/card-bg.png"
-          />
-          <TopicCard
-            title="Структура HTML документа"
-            level={2}
-            progress={55}
-            time={60}
-            img="./assets/card-bg.png"
-          />
-          <TopicCard
-            title="Структура HTML документа"
-            level={2}
-            progress={55}
-            time={60}
-            img="./assets/card-bg.png"
-          />
-          <TopicCard
-            title="Структура HTML документа"
-            level={2}
-            progress={55}
-            time={60}
-            img="./assets/card-bg.png"
-          />
-          <TopicCard
-            title="Структура HTML документа"
-            level={2}
-            progress={55}
-            time={60}
-            img="./assets/card-bg.png"
-          />
+          {courses.map((course) => (
+            <TopicCard
+              key={course.id}
+              id={course.id}
+              title={course.name}
+              level={course.level}
+              time={course.time}
+              img={course.img}
+            />
+          ))}
         </Slider>
       </div>
     </div>

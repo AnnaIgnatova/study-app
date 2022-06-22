@@ -6,6 +6,7 @@ import langReducer from './../features/lang/langSlice';
 import userReducer from './../features/user/userSlice';
 import testingReducer from '../features/testing/testingSlice';
 import modalReducer from '../features/modal/modalSlice';
+import courseReducer from '../features/courses/courseSlice';
 
 const rootReducer = combineReducers({
   themeReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   userReducer,
   testingReducer,
   modalReducer,
+  courseReducer,
 });
 
 export const store = () => {

@@ -1,11 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowBtn } from '../../components/arrowBtn';
+import { useAppSelector } from '../../store';
 import { NavBlock } from '../main/NavBlock';
 import './style.css';
 
 export const Theory = () => {
+  const { courseById } = useAppSelector((state) => state.courseReducer);
   const { t } = useTranslation();
+
   return (
     <div className="main">
       <div className="main-nav-container">
@@ -16,34 +19,33 @@ export const Theory = () => {
       </div>
 
       <div className="tasks-container theory-container">
-        <span className="theory-subtitle">Основы современной вёрстки</span>
+        <span className="theory-subtitle">{courseById.subtitle}</span>
         <div className="title-level">
-          <h2 className="main-title theory-title">Базовая структура HTML документа</h2>
+          <h2 className="main-title theory-title">{courseById.name}</h2>
           <div className="theory-level">
             <span>{t('theory.level')}</span>
-            <div className="theory-level-num">2</div>
+            <div className="theory-level-num">{courseById.level}</div>
           </div>
         </div>
         <hr className="theory-line" />
         <div className="theory-description">
-          <p>
-            Как театр начинается с вешалки, так и любой HTML-документ начинается с базовой
-            структуры. Она включает в себя теги, которые есть в любом HTML-файле. Эти теги и
-            служебная информация нужны браузеру для корректного отображения информации.
-          </p>
-          <p>Взглянем на базовую структуру любого HTML-документа:</p>
-          <img src="./assets/theory-example.png" alt="example" />
-          <p>
-            Этот набор кажется не очень большим, но браузеру он сообщает множество полезной
-            информации. В этом уроке разберёмся с каждой строчкой этой структуры.
-          </p>
-          <p>DOCTYPE</p>
-          <p>
-            Первая конструкция в любом HTML-документе — элемент DOCTYPE. Он не относится к тегам и
-            никаким образом не может отображаться на странице. Его задача — указать браузеру, какой
-            стандарт HTML используется в этом документе. Сейчас это везде стандарт HTML5.
-            Записывается он следующим образом:
-          </p>
+          {courseById.theory
+            ? JSON.parse(courseById.theory).map((item: any) => {
+                switch (Object.keys(item)[0]) {
+                  case 'text': {
+                    return <p>{item['text']}</p>;
+                  }
+                  case 'title': {
+                    return <h3>{item['title']}</h3>;
+                  }
+                  case 'img': {
+                    return <img src={item['img']} alt="example" />;
+                  }
+                  default:
+                    return '';
+                }
+              })
+            : ''}
         </div>
         <Link to="/examples" className="theory-btn-container">
           <ArrowBtn text={t('theory.examples')} right={true} />

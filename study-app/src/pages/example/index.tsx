@@ -37,11 +37,7 @@ export const Example = () => {
             src="https://codepen.io/annaignatova/embed/XWZVyoY?default-tab=html%2Cresult&editable=true"
             frameBorder="no"
             loading="lazy"
-          >
-            See the Pen <a href="https://codepen.io/annaignatova/pen/XWZVyoY">Untitled</a> by Anna (
-            <a href="https://codepen.io/annaignatova">@annaignatova</a>) on{' '}
-            <a href="https://codepen.io">CodePen</a>.
-          </iframe>
+          ></iframe>
         </div>
         <Link
           to="/testing-task"
