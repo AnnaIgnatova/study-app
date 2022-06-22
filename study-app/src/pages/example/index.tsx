@@ -2,13 +2,43 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowBtn } from '../../components/arrowBtn';
 import { changeTest } from '../../features/testing/testingSlice';
-import { useAppDispatch } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { NavBlock } from '../main/NavBlock';
 import './style.css';
 
 export const Example = () => {
   const { t } = useTranslation();
+  const { courseById } = useAppSelector((state) => state.courseReducer);
   const dispatch = useAppDispatch();
+
+  const getInfo = () => {
+    return JSON.parse(courseById.examples).map((item: any) => {
+      switch (Object.keys(item)[0]) {
+        case 'text': {
+          return <p>{item['text']}</p>;
+        }
+        case 'title': {
+          return <h3>{item['title']}</h3>;
+        }
+        case 'code': {
+          return (
+            <iframe
+              height="300"
+              style={{ width: '100%' }}
+              scrolling="no"
+              title="Untitled"
+              src={item['code']}
+              frameBorder="no"
+              loading="lazy"
+            ></iframe>
+          );
+        }
+        default:
+          return '';
+      }
+    });
+  };
+
   return (
     <div className="main">
       <div className="main-nav-container">
@@ -22,23 +52,11 @@ export const Example = () => {
           <h2 className="main-title theory-title">{t('examples.title')}</h2>
           <div className="theory-level">
             <span>{t('theory.level')}</span>
-            <div className="theory-level-num">2</div>
+            <div className="theory-level-num">{courseById.level}</div>
           </div>
         </div>
         <hr className="theory-line" />
-        <div className="theory-description">
-          <p>Повторите страницу по данному по образцу:</p>
-          <img src="./assets/example.png" alt="example" />
-          <iframe
-            height="300"
-            style={{ width: '100%' }}
-            scrolling="no"
-            title="Untitled"
-            src="https://codepen.io/annaignatova/embed/XWZVyoY?default-tab=html%2Cresult&editable=true"
-            frameBorder="no"
-            loading="lazy"
-          ></iframe>
-        </div>
+        <div className="theory-description">{courseById.examples ? getInfo() : ''}</div>
         <Link
           to="/testing-task"
           className="theory-btn-container"
