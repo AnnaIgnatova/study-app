@@ -1,0 +1,18 @@
+.testing-create-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px;
+}
+.testing-create-container label {
+  display: flex;
+  width: 700px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.testing-create-container label:first-child {
+  margin-bottom: 50px;
+}
+.testing-create-container input {
+  width: 500px !important;
+}

@@ -14,8 +14,22 @@ export const Practise = () => {
   const { isPracticeChecked } = useAppSelector((state) => state.testingReducer);
   const { courseById } = useAppSelector((state) => state.courseReducer);
   const dispatch = useAppDispatch();
-  const { name, subtitle, level } = courseById;
-  const { title, img } = JSON.parse(courseById.practise);
+  const { name, subtitle, level, practise } = courseById;
+
+  const getInfo = () => {
+    return JSON.parse(practise).map((item: any) => {
+      switch (Object.keys(item)[0]) {
+        case 'title': {
+          return <div className="practise-title">{item['title']}</div>;
+        }
+        case 'img': {
+          return <img src={item['img']} alt="example" className="practise-img" />;
+        }
+        default:
+          return '';
+      }
+    });
+  };
 
   return (
     <>
@@ -43,8 +57,7 @@ export const Practise = () => {
           </div>
           <hr className="theory-line" />
           <div className="theory-description">
-            <div className="practise-title">{title}</div>
-            <img src={img} alt="example" className="practise-img" />
+            {practise ? getInfo() : ''}
             <iframe
               height="300"
               style={{ width: '100%' }}

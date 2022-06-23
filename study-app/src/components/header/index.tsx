@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
-import { createNewCourse } from '../../features/courses/courseSlice';
 import { changeSignInModalOpen, changeSignUpModalOpen } from '../../features/modal/modalSlice';
 import { useAppDispatch } from '../../store';
 import { FilledBtn } from '../filledBtn';
@@ -20,7 +19,7 @@ const data = [
     examples:
       '[{"title":"Взглянем на живой пример. Слева — HTML-код, а справа то, как он преобразован браузером в вид для людей:"},{"code":"https://codepen.io/hexlet/embed/zEjbGM?default-tab=html%2Cresult&editable=true"},{"text":"А теперь измените HTML-код в левой панели таким образом, чтобы вместо «на Хекслет» было «в Википедию»."}]',
     practise:
-      '{"title":"Сделайте страницу, как показано на рис. 1. Размеры всех частей заданы в пикселах и не меняются в процессе масштабирования окна. Для каждой батарейки постарайтесь обойтись одним элементом.","img":"http://htmlbook.ru/files/images/practical/62.png"}',
+      '[{"title":"Сделайте страницу, как показано на рис. 1. Размеры всех частей заданы в пикселах и не меняются в процессе масштабирования окна. Для каждой батарейки постарайтесь обойтись одним элементом."},{"img":"http://htmlbook.ru/files/images/practical/62.png"}]',
     testing:
       '[{"question":"Расшифруйте аббревиатуру HTML.","answer_1":"HyperText Markup Language","answer_2":"HeadingText Mode Language","answer_3":"HeadText Modulation Language","right":"HyperText Markup Language"},{"question":"Где правильно использовать тег title?","answer_1":"в теге head","answer_2":"в теге body","answer_3":"в теге footer","right":"в теге head"},{"question":"При помощи какого тега можно создать ссылку в документе?","answer_1":"<p>","answer_2":"<link>","answer_3":"<a>","right":"<a>"},{"question":"Какой атрибут используется для определения URL-адреса в ссылке?","answer_1":"alt","answer_2":"href","answer_3":"name","right":"href"},{"question":"Какой тег используется для вывода изображения?","answer_1":"<images>","answer_2":"<img>","answer_3":"<image>","right":"<img>"}]',
     img: 'https://www.codingbytes.com/wp-content/uploads/2019/03/1_28-1lYrYTQoLhi87mllgBw.png',
@@ -35,7 +34,7 @@ const data = [
     examples:
       '[{"title":"Взглянем на живой пример. Слева — HTML-код, а справа то, как он преобразован браузером в вид для людей:"},{"code":"https://codepen.io/hexlet/embed/zEjbGM?default-tab=html%2Cresult&editable=true"},{"text":"А теперь измените HTML-код в левой панели таким образом, чтобы вместо «на Хекслет» было «в Википедию»."}]',
     practise:
-      '{"title":"Сделайте страницу, как показано на рис. 1. Размеры всех частей заданы в пикселах и не меняются в процессе масштабирования окна. Для каждой батарейки постарайтесь обойтись одним элементом.","img":"http://htmlbook.ru/files/images/practical/62.png"}',
+      '[{"title":"Сделайте страницу, как показано на рис. 1. Размеры всех частей заданы в пикселах и не меняются в процессе масштабирования окна. Для каждой батарейки постарайтесь обойтись одним элементом."},{"img":"http://htmlbook.ru/files/images/practical/62.png"}]',
     testing:
       '[{"question":"Расшифруйте аббревиатуру HTML.","answer_1":"HyperText Markup Language","answer_2":"HeadingText Mode Language","answer_3":"HeadText Modulation Language","right":"HyperText Markup Language"},{"question":"Где правильно использовать тег title?","answer_1":"в теге head","answer_2":"в теге body","answer_3":"в теге footer","right":"в теге head"},{"question":"При помощи какого тега можно создать ссылку в документе?","answer_1":"<p>","answer_2":"<link>","answer_3":"<a>","right":"<a>"},{"question":"Какой атрибут используется для определения URL-адреса в ссылке?","answer_1":"alt","answer_2":"href","answer_3":"name","right":"href"},{"question":"Какой тег используется для вывода изображения?","answer_1":"<images>","answer_2":"<img>","answer_3":"<image>","right":"<img>"}]',
     img: 'https://miro.medium.com/max/750/1*eTuCOcn_u09KDIkEKoOhZQ.jpeg',
@@ -50,7 +49,7 @@ const data = [
     examples:
       '[{"title":"Взглянем на живой пример. Слева — HTML-код, а справа то, как он преобразован браузером в вид для людей:"},{"code":"https://codepen.io/hexlet/embed/zEjbGM?default-tab=html%2Cresult&editable=true"},{"text":"А теперь измените HTML-код в левой панели таким образом, чтобы вместо «на Хекслет» было «в Википедию»."}]',
     practise:
-      '{"title":"Сделайте страницу, как показано на рис. 1. Размеры всех частей заданы в пикселах и не меняются в процессе масштабирования окна. Для каждой батарейки постарайтесь обойтись одним элементом.","img":"http://htmlbook.ru/files/images/practical/62.png"}',
+      '[{"title":"Сделайте страницу, как показано на рис. 1. Размеры всех частей заданы в пикселах и не меняются в процессе масштабирования окна. Для каждой батарейки постарайтесь обойтись одним элементом."},{"img":"http://htmlbook.ru/files/images/practical/62.png"}]',
     testing:
       '[{"question":"Расшифруйте аббревиатуру HTML.","answer_1":"HyperText Markup Language","answer_2":"HeadingText Mode Language","answer_3":"HeadText Modulation Language","right":"HyperText Markup Language"},{"question":"Где правильно использовать тег title?","answer_1":"в теге head","answer_2":"в теге body","answer_3":"в теге footer","right":"в теге head"},{"question":"При помощи какого тега можно создать ссылку в документе?","answer_1":"<p>","answer_2":"<link>","answer_3":"<a>","right":"<a>"},{"question":"Какой атрибут используется для определения URL-адреса в ссылке?","answer_1":"alt","answer_2":"href","answer_3":"name","right":"href"},{"question":"Какой тег используется для вывода изображения?","answer_1":"<images>","answer_2":"<img>","answer_3":"<image>","right":"<img>"}]',
     img: 'https://fresheropenings.com/wp-content/uploads/2020/08/170427-637251494437967118-16x9html.jpg',
@@ -65,7 +64,7 @@ const data = [
     examples:
       '[{"title":"Взглянем на живой пример. Слева — HTML-код, а справа то, как он преобразован браузером в вид для людей:"},{"code":"https://codepen.io/hexlet/embed/zEjbGM?default-tab=html%2Cresult&editable=true"},{"text":"А теперь измените HTML-код в левой панели таким образом, чтобы вместо «на Хекслет» было «в Википедию»."}]',
     practise:
-      '{"title":"Сделайте страницу, как показано на рис. 1. Размеры всех частей заданы в пикселах и не меняются в процессе масштабирования окна. Для каждой батарейки постарайтесь обойтись одним элементом.","img":"http://htmlbook.ru/files/images/practical/62.png"}',
+      '[{"title":"Сделайте страницу, как показано на рис. 1. Размеры всех частей заданы в пикселах и не меняются в процессе масштабирования окна. Для каждой батарейки постарайтесь обойтись одним элементом."},{"img":"http://htmlbook.ru/files/images/practical/62.png"}]',
     testing:
       '[{"question":"Расшифруйте аббревиатуру HTML.","answer_1":"HyperText Markup Language","answer_2":"HeadingText Mode Language","answer_3":"HeadText Modulation Language","right":"HyperText Markup Language"},{"question":"Где правильно использовать тег title?","answer_1":"в теге head","answer_2":"в теге body","answer_3":"в теге footer","right":"в теге head"},{"question":"При помощи какого тега можно создать ссылку в документе?","answer_1":"<p>","answer_2":"<link>","answer_3":"<a>","right":"<a>"},{"question":"Какой атрибут используется для определения URL-адреса в ссылке?","answer_1":"alt","answer_2":"href","answer_3":"name","right":"href"},{"question":"Какой тег используется для вывода изображения?","answer_1":"<images>","answer_2":"<img>","answer_3":"<image>","right":"<img>"}]',
     img: 'https://i0.wp.com/rifqimulyawan.com/wp-content/uploads/Gambar-Istilah-Istilah-Dalam-CSS.jpg?fit=1068%2C713&ssl=1',
@@ -80,7 +79,7 @@ const data = [
     examples:
       '[{"title":"Взглянем на живой пример. Слева — HTML-код, а справа то, как он преобразован браузером в вид для людей:"},{"code":"https://codepen.io/hexlet/embed/zEjbGM?default-tab=html%2Cresult&editable=true"},{"text":"А теперь измените HTML-код в левой панели таким образом, чтобы вместо «на Хекслет» было «в Википедию»."}]',
     practise:
-      '{"title":"Сделайте страницу, как показано на рис. 1. Размеры всех частей заданы в пикселах и не меняются в процессе масштабирования окна. Для каждой батарейки постарайтесь обойтись одним элементом.","img":"http://htmlbook.ru/files/images/practical/62.png"}',
+      '[{"title":"Сделайте страницу, как показано на рис. 1. Размеры всех частей заданы в пикселах и не меняются в процессе масштабирования окна. Для каждой батарейки постарайтесь обойтись одним элементом."},{"img":"http://htmlbook.ru/files/images/practical/62.png"}]',
     testing:
       '[{"question":"Расшифруйте аббревиатуру HTML.","answer_1":"HyperText Markup Language","answer_2":"HeadingText Mode Language","answer_3":"HeadText Modulation Language","right":"HyperText Markup Language"},{"question":"Где правильно использовать тег title?","answer_1":"в теге head","answer_2":"в теге body","answer_3":"в теге footer","right":"в теге head"},{"question":"При помощи какого тега можно создать ссылку в документе?","answer_1":"<p>","answer_2":"<link>","answer_3":"<a>","right":"<a>"},{"question":"Какой атрибут используется для определения URL-адреса в ссылке?","answer_1":"alt","answer_2":"href","answer_3":"name","right":"href"},{"question":"Какой тег используется для вывода изображения?","answer_1":"<images>","answer_2":"<img>","answer_3":"<image>","right":"<img>"}]',
     img: 'https://www.enuygunteklif.com/wp-content/uploads/2019/02/css-temel-bilgiler.jpg',

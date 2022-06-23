@@ -65,6 +65,7 @@
 }
 
 .course-add-field select {
+  font-family: 'Roboto', sans-serif;
   height: 50px;
   width: 100px;
   padding-left: 15px;
@@ -78,4 +79,10 @@
 }
 .create-course-block button:hover {
   color: #fff;
+}
+.validation-msg {
+  display: block;
+  color: #fb6d3a;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }

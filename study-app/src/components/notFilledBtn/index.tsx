@@ -3,8 +3,14 @@ import './style.css';
 
 export const NotFilledBtn = (props: BtnProps) => {
   const { text, toggleModal } = props;
+
+  const callEvent = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (toggleModal) toggleModal();
+  };
+
   return (
-    <button className="filled-btn not-filled-btn" onClick={toggleModal}>
+    <button className="filled-btn not-filled-btn" onClick={callEvent}>
       {text}
     </button>
   );
