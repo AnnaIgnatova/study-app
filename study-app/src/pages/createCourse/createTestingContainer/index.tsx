@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './style.css';
 
 export interface TestingBlockProps {
@@ -10,12 +11,13 @@ export interface TestingBlockProps {
 export const CreateTestingContainer = (props: TestingBlockProps) => {
   const { data, i, createTestingBlock } = props;
   const [questionData, setQuestionData] = useState(data);
+  const { t } = useTranslation();
 
   const changeData = async (type: string, e: ChangeEvent) => {
     const newValue = { ...questionData, [type]: (e.target as HTMLInputElement).value };
     setQuestionData(() => {
       return {
-        ...newValue
+        ...newValue,
       };
     });
     createTestingBlock(newValue, i);
@@ -24,7 +26,7 @@ export const CreateTestingContainer = (props: TestingBlockProps) => {
   return (
     <div className="testing-create-container">
       <label htmlFor="questinon">
-        Вопрос
+        {t('createCourse.question')}
         <input
           type="text"
           id="questinon"
@@ -35,7 +37,7 @@ export const CreateTestingContainer = (props: TestingBlockProps) => {
         />
       </label>
       <label htmlFor="answer_1">
-        Вариант ответа 1
+        {t('createCourse.answer')} 1
         <input
           type="text"
           id="answer_1"
@@ -46,7 +48,7 @@ export const CreateTestingContainer = (props: TestingBlockProps) => {
         />
       </label>
       <label htmlFor="answer_2">
-        Вариант ответа 2
+        {t('createCourse.answer')} 2
         <input
           type="text"
           id="answer_2"
@@ -57,7 +59,7 @@ export const CreateTestingContainer = (props: TestingBlockProps) => {
         />
       </label>
       <label htmlFor="answer_3">
-        Вариант ответа 3
+        {t('createCourse.answer')} 3
         <input
           type="text"
           id="answer_3"
@@ -68,7 +70,7 @@ export const CreateTestingContainer = (props: TestingBlockProps) => {
         />
       </label>
       <label htmlFor="right">
-        Верный ответ
+        {t('createCourse.right')}
         <input
           type="text"
           id="right"

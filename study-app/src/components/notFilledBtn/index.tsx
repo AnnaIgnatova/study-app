@@ -5,7 +5,6 @@ export const NotFilledBtn = (props: BtnProps) => {
   const { text, toggleModal } = props;
 
   const callEvent = (e: React.MouseEvent) => {
-    e.preventDefault();
     if (toggleModal) toggleModal();
   };
 

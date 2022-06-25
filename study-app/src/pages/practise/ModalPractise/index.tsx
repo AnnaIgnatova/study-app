@@ -29,7 +29,7 @@ export const ModalPractise = (props: ModalPractiseProps) => {
           <div className="modal-title">{t('modalPractise.title')}</div>
           <img src="./assets/congratulation.png" alt="congratulation" />
           <Link to="/main">
-            <FilledBtn text={t('modalPractise.toMain')} type="navigate" />
+            <FilledBtn text={t('modalPractise.toMain')} />
           </Link>
         </div>
       </div>

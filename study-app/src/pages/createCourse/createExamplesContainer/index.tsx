@@ -29,9 +29,9 @@ export const CreateExamplesContainer = (props: CreateExamplesProps) => {
     <div className="course-add-field">
       <textarea placeholder={text} rows={3} onInput={addInfo}></textarea>
       <select onChange={changeType}>
-        <option value="title">title</option>
-        <option value="code">code</option>
-        <option value="text">text</option>
+        <option value="title">{t('createCourse.titleOption')}</option>
+        <option value="code">{t('createCourse.codeOption')}</option>
+        <option value="text">{t('createCourse.textOption')}</option>
       </select>
     </div>
   );

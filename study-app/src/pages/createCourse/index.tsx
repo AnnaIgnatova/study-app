@@ -9,13 +9,13 @@ import { Link } from 'react-router-dom';
 import { ArrowBtn } from '../../components/arrowBtn';
 import { changeCourseCreated } from '../../features/modal/modalSlice';
 import ICourseData from '../../types/course.type';
-import { NotFilledBtn } from '../../components/notFilledBtn';
 import { CreateTheoryContainer } from './createTheoryContainer';
 import { CreateExamplesContainer } from './createExamplesContainer';
 import { CreatePractiseContainer } from './createPractiseContainer';
 import { CreateTestingContainer } from './createTestingContainer';
 import { defaultCourseInfo, defaultValidation, testingDefaultData } from './constants';
 import { createNewCourse } from '../../features/courses/courseSlice';
+import { AddNewBlockBtn } from './addNewBlockBtn';
 
 export const CreateCourse = () => {
   const { t } = useTranslation();
@@ -181,24 +181,26 @@ export const CreateCourse = () => {
               <input
                 required
                 type="text"
-                placeholder={t('createCourse.nameInput')}
                 onInput={(e) => {
                   changeInput(e, 0, 'name');
                 }}
               />
-              {!validation[0] && <span className="validation-msg">заполните поле</span>}
+              {!validation[0] && (
+                <span className="validation-msg">{t('createCourse.fillField')}</span>
+              )}
             </div>
             <div className="create-course-block">
-              <h3>Подзаголовок</h3>
+              <h3>{t('createCourse.subtitle')}</h3>
               <input
                 required
                 type="text"
-                placeholder={t('createCourse.nameInput')}
                 onInput={(e) => {
                   changeInput(e, 1, 'subtitle');
                 }}
               />
-              {!validation[1] && <span className="validation-msg">заполните поле</span>}
+              {!validation[1] && (
+                <span className="validation-msg">{t('createCourse.fillField')}</span>
+              )}
             </div>
             <div className="create-course-wrapper">
               <div className="create-course-block">
@@ -210,7 +212,9 @@ export const CreateCourse = () => {
                     changeInput(e, 2, 'level');
                   }}
                 />
-                {!validation[2] && <span className="validation-msg">заполните поле</span>}
+                {!validation[2] && (
+                  <span className="validation-msg">{t('createCourse.fillField')}</span>
+                )}
               </div>
               <div className="create-course-block">
                 <h3>{t('createCourse.time')}</h3>
@@ -222,7 +226,9 @@ export const CreateCourse = () => {
                     changeInput(e, 3, 'time');
                   }}
                 />
-                {!validation[3] && <span className="validation-msg">заполните поле</span>}
+                {!validation[3] && (
+                  <span className="validation-msg">{t('createCourse.fillField')}</span>
+                )}
               </div>
             </div>
             <div className="create-course-block">
@@ -231,8 +237,10 @@ export const CreateCourse = () => {
                 Object.values(theoryInfo).map((item, i) => (
                   <CreateTheoryContainer createTheoryBlock={createTheoryBlock} i={i} item={item} />
                 ))}
-              {!validation[4] && <span className="validation-msg">заполните все поля</span>}
-              <NotFilledBtn text="добавить" toggleModal={addCreateTheoryBlock} />
+              {!validation[4] && (
+                <span className="validation-msg">{t('createCourse.fillAllFields')}</span>
+              )}
+              <AddNewBlockBtn text={t('createCourse.addBtn')} toggleModal={addCreateTheoryBlock} />
             </div>
             <div className="create-course-block">
               <h3>{t('createCourse.examples')}</h3>
@@ -244,8 +252,13 @@ export const CreateCourse = () => {
                     item={item}
                   />
                 ))}
-              {!validation[5] && <span className="validation-msg">заполните все поля</span>}
-              <NotFilledBtn text="добавить" toggleModal={addCreateExamplesBlock} />
+              {!validation[5] && (
+                <span className="validation-msg">{t('createCourse.fillAllFields')}</span>
+              )}
+              <AddNewBlockBtn
+                text={t('createCourse.addBtn')}
+                toggleModal={addCreateExamplesBlock}
+              />
             </div>
             <div className="create-course-block">
               <h3>{t('createCourse.testing')}</h3>
@@ -258,7 +271,9 @@ export const CreateCourse = () => {
                   />
                 );
               })}
-              {!validation[6] && <span className="validation-msg">заполните все поля</span>}
+              {!validation[6] && (
+                <span className="validation-msg">{t('createCourse.fillAllFields')}</span>
+              )}
             </div>
             <div className="create-course-block">
               <h3>{t('createCourse.practise')}</h3>
@@ -270,8 +285,13 @@ export const CreateCourse = () => {
                     item={item}
                   />
                 ))}
-              {!validation[7] && <span className="validation-msg">заполните все поля</span>}
-              <NotFilledBtn text="добавить" toggleModal={addCreatePractiseBlock} />
+              {!validation[7] && (
+                <span className="validation-msg">{t('createCourse.fillAllFields')}</span>
+              )}
+              <AddNewBlockBtn
+                text={t('createCourse.addBtn')}
+                toggleModal={addCreatePractiseBlock}
+              />
             </div>
             <div className="create-course-block">
               <h3>{t('createCourse.img')}</h3>
@@ -282,7 +302,9 @@ export const CreateCourse = () => {
                   changeInput(e, 8, 'img');
                 }}
               />
-              {!validation[8] && <span className="validation-msg">заполните поле</span>}
+              {!validation[8] && (
+                <span className="validation-msg">{t('createCourse.fillField')}</span>
+              )}
             </div>
           </form>
           {!isCourseCreated && validation.indexOf(false) === -1 ? (
