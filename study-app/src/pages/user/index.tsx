@@ -16,13 +16,18 @@ export const User = () => {
   const chartData = progress ? Object.values(JSON.parse(progress)) : [];
 
   useEffect(() => {
-    dispatch(createUser());
-  }, []);
+    if (!name) dispatch(createUser());
+    console.log(avatar);
+  }, [name, avatar]);
 
   return (
     <div className="user">
       <div className="user-info">
-        <img src={avatar ? avatar : './assets/avatar.png'} alt="avatar" className="user-avatar" />
+        <img
+          src={avatar ? avatar : './assets/avatar.png'}
+          alt="avatar"
+          className="user-avatar"
+        />
         <span className="user-name">{name}</span>
         <span className="user-email">{email}</span>
         <Link to="/settings">

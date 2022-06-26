@@ -18,7 +18,7 @@ const initialState: CourseState = {
     practise: '',
     testing: '',
     examples: '',
-    id: 0,
+    id: '',
     img: '',
   },
 };
@@ -28,6 +28,7 @@ export const getCoursesData = createAsyncThunk(
   async (payload, { dispatch, rejectWithValue }) => {
     try {
       const response = await CourseDataService.getAll();
+      console.log(response.data);
       dispatch(getCourses(response.data));
     } catch (err) {
       return rejectWithValue(err);

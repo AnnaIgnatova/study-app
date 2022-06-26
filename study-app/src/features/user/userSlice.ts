@@ -4,7 +4,7 @@ import UserDataService from './../../services/user.service';
 export interface UserState {
   name: string;
   email: string;
-  avatar: string;
+  avatar: any;
   accessToken: string;
   courses: string;
   level: number;
@@ -18,7 +18,7 @@ const initialState: UserState = {
   email: '',
   avatar: '',
   accessToken: localStorage.getItem('token_study_app') || '',
-  courses: '',
+  courses: JSON.stringify([]),
   level: 0,
   progress: '',
 };
@@ -45,6 +45,7 @@ export const createUser = createAsyncThunk(
 
       if (token && id) {
         const response = await UserDataService.findUser(id);
+        console.log(response.data);
         dispatch(getUser({ ...response.data }));
       }
     } catch (err) {
@@ -95,6 +96,52 @@ export const signUp = createAsyncThunk(
   }
 );
 
+export interface ChangeDataPayload {
+  type: string;
+  id: string;
+  value: any;
+}
+
+export const changeUserData = createAsyncThunk(
+  'user/changeUserData',
+  async (payload: ChangeDataPayload, { dispatch, rejectWithValue }) => {
+    try {
+      const { id, type, value } = payload;
+      await UserDataService.changeData(id, type, value);
+      switch (type) {
+        case 'name': {
+          dispatch(changeName(value));
+          return;
+        }
+        case 'email': {
+          dispatch(changeEmail(value));
+          return;
+        }
+        case 'progress': {
+          dispatch(changeProgress(value));
+          return;
+        }
+        case 'img': {
+          dispatch(changeAvatar(value));
+          return;
+        }
+        case 'level': {
+          dispatch(changeLevel(value));
+          return;
+        }
+        case 'courses': {
+          dispatch(changeCourses(value));
+          return;
+        }
+        default:
+          return;
+      }
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
 export const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -102,7 +149,7 @@ export const userSlice = createSlice({
     getUser: (state, action) => {
       state.name = action.payload.name;
       state.email = action.payload.email;
-      state.avatar = action.payload.avatar;
+      state.avatar = action.payload.img;
       state.courses = action.payload.courses;
       state.level = action.payload.level;
       state.progress = action.payload.progress;
@@ -115,6 +162,15 @@ export const userSlice = createSlice({
     },
     changeAvatar: (state, action) => {
       state.avatar = action.payload;
+    },
+    changeLevel: (state, action) => {
+      state.level = action.payload;
+    },
+    changeCourses: (state, action) => {
+      state.courses = action.payload;
+    },
+    changeProgress: (state, action) => {
+      state.progress = action.payload;
     },
     logOut: (state) => {
       localStorage.setItem('token_study_app', '');
@@ -131,6 +187,16 @@ export const userSlice = createSlice({
   },
 });
 
-export const { changeName, changeEmail, changeAvatar, getUser, logOut, logIn } = userSlice.actions;
+export const {
+  changeName,
+  changeEmail,
+  changeAvatar,
+  getUser,
+  logOut,
+  logIn,
+  changeLevel,
+  changeCourses,
+  changeProgress,
+} = userSlice.actions;
 
 export default userSlice.reducer;

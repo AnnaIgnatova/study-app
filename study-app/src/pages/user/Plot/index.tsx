@@ -5,7 +5,7 @@ import { dataRU } from '../constants/dataRu';
 import { CustomizedAxisTick } from '../CustomAxis';
 
 export const ProgressPlot = (props: any) => {
-  const { currentLang } = useAppSelector((state) => state.langReducer);
+  const { currentLang } = useAppSelector((state: any) => state.langReducer);
   const data = currentLang === 'ru' ? dataRU : dataEN;
 
   const chartData = data.map((obj, index) => {

@@ -37,7 +37,7 @@ export const TopicCard = (props: TopicCardProps) => {
         {!type && (
           <div className="progress-links">
             <div className="topic-progress">
-              <div className="topic-progress-scale"></div>
+              <div className="topic-progress-scale" style={{ width: `${progress}px` }}></div>
               <span>{progress}%</span>
             </div>
             <TopicNav />

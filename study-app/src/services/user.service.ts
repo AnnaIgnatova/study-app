@@ -6,7 +6,7 @@ export interface IUserData {
   email: string;
   level: number;
   progress: string;
-  img: string;
+  img: Blob;
   courses: string;
   password: string;
   accessToken?: string;
@@ -21,6 +21,9 @@ class UserDataService {
   }
   findUser(id: string) {
     return http.get<IUserData>(`/user/${id}`);
+  }
+  changeData(id: string, type: string, value: any) {
+    return http.post<IUserData>(`/user/${id}`, { type, value });
   }
 }
 export default new UserDataService();

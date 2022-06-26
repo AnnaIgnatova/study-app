@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NotFilledBtn } from '../../components/notFilledBtn';
-import { changeAvatar, changeEmail, changeName, logOut } from '../../features/user/userSlice';
+import { changeAvatar, changeEmail, changeUserData, logOut } from '../../features/user/userSlice';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { InfoInput } from './InfoInput';
 import './style.css';
@@ -11,7 +11,7 @@ export const Settings = () => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { name, email, avatar } = useAppSelector((state) => state.userReducer);
+  const { name, email, avatar, id } = useAppSelector((state) => state.userReducer);
 
   const logOutUser = () => {
     dispatch(logOut());
@@ -21,11 +21,11 @@ export const Settings = () => {
   const editInfo = (field: string, value: string) => {
     switch (field) {
       case 'text': {
-        dispatch(changeName(value));
+        dispatch(changeUserData({ id, type: 'name', value }));
         return;
       }
       case 'email': {
-        dispatch(changeEmail(value));
+        dispatch(changeUserData({ id, type: 'email', value }));
         return;
       }
       default:
@@ -34,8 +34,8 @@ export const Settings = () => {
   };
 
   const changeAvatarURL = (e: ChangeEvent) => {
-    const url = URL.createObjectURL((e.target! as HTMLInputElement).files![0]);
-    dispatch(changeAvatar(url));
+    const url = (e.target! as HTMLInputElement).files![0];
+    dispatch(changeUserData({ id, type: 'img', value: url }));
   };
 
   return (

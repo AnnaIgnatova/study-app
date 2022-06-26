@@ -10,10 +10,13 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { useEffect } from 'react';
 import { getCoursesData } from '../../features/courses/courseSlice';
+import { createUser } from '../../features/user/userSlice';
 
 export const Main = () => {
   const { t } = useTranslation();
   const { courses } = useAppSelector((state) => state.courseReducer);
+  const userCourses = JSON.parse(useAppSelector((state) => state.userReducer.courses));
+  const name = useAppSelector((state) => state.userReducer.name);
   const dispatch = useAppDispatch();
   const settings = {
     dots: false,
@@ -27,6 +30,7 @@ export const Main = () => {
 
   useEffect(() => {
     dispatch(getCoursesData());
+    if (!name.length) dispatch(createUser());
   }, []);
 
   return (
@@ -46,6 +50,13 @@ export const Main = () => {
               level={course.level}
               time={course.time}
               img={course.img}
+              progress={
+                userCourses.filter((value: any) => Object.keys(value)[0] == course.id).length
+                  ? userCourses.filter((value: any) => Object.keys(value)[0] == course.id)[0][
+                      course.id
+                    ]
+                  : 0
+              }
             />
           ))}
         </Slider>
