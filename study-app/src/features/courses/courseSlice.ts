@@ -50,7 +50,6 @@ export const getCourseDataById = createAsyncThunk(
 export const createNewCourse = createAsyncThunk(
   'course/createNewCourse',
   async (payload: ICourseData, { dispatch, rejectWithValue }) => {
-    console.log(payload);
     try {
       const response = await CourseDataService.create(payload);
       dispatch(addCourse(response.data));

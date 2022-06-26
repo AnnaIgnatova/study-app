@@ -9,27 +9,18 @@ export interface IUserData {
   img: string;
   courses: string;
   password: string;
+  accessToken?: string;
 }
 
 class UserDataService {
-  signIn() {
-    return http.post<IUserData>(`/users/signin`, { email: 'email2', password: 'pass2' });
+  signIn(data: any) {
+    return http.post<IUserData>(`/auth/signin`, { ...data });
   }
-  signUp() {
-    return http.post<IUserData>('/users/signup', {
-      email: 'email2',
-      password: 'pass2',
-      img: 'ss',
-      progress: 'sss',
-      level: 1,
-      courses: 'ss',
-    });
+  signUp(data: any) {
+    return http.post<IUserData>('/auth/signup', { ...data });
   }
-  logOut() {
-    return http.get<IUserData>('/users/logout');
-  }
-  findUser(email: string) {
-    return http.post<IUserData>(`/users/user`, { email });
+  findUser(id: string) {
+    return http.get<IUserData>(`/user/${id}`);
   }
 }
 export default new UserDataService();

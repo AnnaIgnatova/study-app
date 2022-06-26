@@ -3,11 +3,22 @@ import { NotFilledBtn } from './../../components/notFilledBtn';
 import { ProgressPlot } from './Plot';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAppSelector } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { useEffect } from 'react';
+import { createUser } from '../../features/user/userSlice';
 
 export const User = () => {
   const { t } = useTranslation();
-  const { name, email, avatar } = useAppSelector((state) => state.userReducer);
+  const dispatch = useAppDispatch();
+  const { name, email, avatar, level, progress, accessToken } = useAppSelector(
+    (state) => state.userReducer
+  );
+  const chartData = progress ? Object.values(JSON.parse(progress)) : [];
+
+  useEffect(() => {
+    dispatch(createUser());
+  }, []);
+
   return (
     <div className="user">
       <div className="user-info">
@@ -24,12 +35,12 @@ export const User = () => {
         </div>
         <div className="level-scale-wrapper">
           <div className="level-scale">
-            <div className="scale"></div>
+            <div className="scale" style={{ width: level }}></div>
           </div>
-          <span className="level-num">87%</span>
+          <span className="level-num">{level}%</span>
         </div>
         <div className="progress-level">{t('user.activity')}</div>
-        <ProgressPlot />
+        <ProgressPlot data={chartData} />
       </div>
     </div>
   );

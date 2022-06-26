@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import { changeSignInModalOpen, changeSignUpModalOpen } from '../../features/modal/modalSlice';
-import { useAppDispatch } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { FilledBtn } from '../filledBtn';
 import { Lang } from '../lang';
 import { NotFilledBtn } from '../notFilledBtn';
@@ -88,6 +88,7 @@ const data = [
 
 export const Header = () => {
   const { t } = useTranslation();
+  const { accessToken } = useAppSelector((state) => state.userReducer);
   const location = useLocation();
   const dispatch = useAppDispatch();
 
@@ -101,17 +102,18 @@ export const Header = () => {
 
   return (
     <div className="header">
-      {location.pathname === '/' && (
+      {location.pathname === '/' && !accessToken && (
         <div className="header-container">
           <FilledBtn text={t('header.signUpBtn')} toggleModal={toggleSignUpModal} />
           <NotFilledBtn text={t('header.signInBtn')} toggleModal={toggleSignInModal} />
         </div>
       )}
-      {location.pathname !== '/' && (
+      {accessToken && location.pathname !== '/main' && (
         <Link to="/main">
           <FilledBtn text={t('header.toMain')} />
         </Link>
       )}
+      {location.pathname === '/main' && <div></div>}
       <div className="header-container">
         {location.pathname !== '/user' && <Link to="/user" className="user-link" />}
         <Theme />

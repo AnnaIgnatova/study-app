@@ -4,24 +4,24 @@ import { useTranslation } from 'react-i18next';
 export interface InfoInputProps {
   title: string;
   type: string;
-  placeholder: string;
-  editInfo: (field: string, value: string) => void;
+  placeholder?: string;
+  editInfo?: (field: string, value: string) => void;
 }
 
 export const InfoInput = (props: InfoInputProps) => {
   const { placeholder, title, type, editInfo } = props;
   const { t } = useTranslation();
-  const [value, setValue] = useState<string>(placeholder);
+  const [value, setValue] = useState<string>(placeholder || '');
   const [isEdit, setEdit] = useState<boolean>(false);
 
   const cancelEdit = () => {
-    setValue(placeholder);
+    if (placeholder) setValue(placeholder);
     setEdit(false);
   };
 
   const saveEdit = () => {
     setEdit(false);
-    editInfo(type, value);
+    if (editInfo) editInfo(type, value);
   };
 
   return (

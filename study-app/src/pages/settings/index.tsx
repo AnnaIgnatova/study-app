@@ -1,15 +1,22 @@
 import { ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NotFilledBtn } from '../../components/notFilledBtn';
-import { changeAvatar, changeEmail, changeName, changePass } from '../../features/user/userSlice';
+import { changeAvatar, changeEmail, changeName, logOut } from '../../features/user/userSlice';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { InfoInput } from './InfoInput';
 import './style.css';
+import { useNavigate } from 'react-router-dom';
 
 export const Settings = () => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
-  const { name, email, pass, avatar } = useAppSelector((state) => state.userReducer);
+  const navigate = useNavigate();
+  const { name, email, avatar } = useAppSelector((state) => state.userReducer);
+
+  const logOutUser = () => {
+    dispatch(logOut());
+    navigate('/');
+  };
 
   const editInfo = (field: string, value: string) => {
     switch (field) {
@@ -19,10 +26,6 @@ export const Settings = () => {
       }
       case 'email': {
         dispatch(changeEmail(value));
-        return;
-      }
-      case 'password': {
-        dispatch(changePass(value));
         return;
       }
       default:
@@ -47,15 +50,10 @@ export const Settings = () => {
       <div className="settings-info">
         <InfoInput title={t('settings.name')} placeholder={name} type="text" editInfo={editInfo} />
         <InfoInput title="E-mail" placeholder={email} type="email" editInfo={editInfo} />
-        <InfoInput
-          title={t('settings.pass')}
-          placeholder={pass}
-          type="password"
-          editInfo={editInfo}
-        />
+        <InfoInput title={t('settings.pass')} type="password" />
         <div className="settings-btns">
           <NotFilledBtn text={t('settings.deleteAcc')} />
-          <NotFilledBtn text={t('settings.signOut')} />
+          <NotFilledBtn text={t('settings.signOut')} toggleModal={logOutUser} />
         </div>
       </div>
     </div>
