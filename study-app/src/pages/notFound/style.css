@@ -1,0 +1,16 @@
+.not-found {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 150px;
+}
+.not-found span {
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  font-weight: 700;
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-top: 50px;
+}

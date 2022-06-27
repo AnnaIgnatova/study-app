@@ -114,4 +114,7 @@ export const ruLang = {
     addBtn: 'Добавить',
     codeOption: 'Ссылка на код',
   },
+  notFound: {
+    title: 'Страница не найдена'
+  }
 };
