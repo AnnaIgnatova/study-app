@@ -3,10 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { NavBlock } from '../main/NavBlock';
 import { Link } from 'react-router-dom';
 import { ArrowBtn } from '../../components/arrowBtn';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ModalPractise } from './ModalPractise';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { changePractise, changeTest } from '../../features/testing/testingSlice';
+import { getCourseDataById } from '../../features/courses/courseSlice';
 
 export const Practise = () => {
   const { t } = useTranslation();
@@ -14,7 +15,11 @@ export const Practise = () => {
   const { isPracticeChecked } = useAppSelector((state) => state.testingReducer);
   const { courseById } = useAppSelector((state) => state.courseReducer);
   const dispatch = useAppDispatch();
-  const { name, subtitle, level, practise } = courseById;
+  const { name, subtitle, level, practise, id } = courseById;
+
+  useEffect(() => {
+    if (!name) dispatch(getCourseDataById(id));
+  }, []);
 
   const getInfo = () => {
     return JSON.parse(practise).map((item: any) => {

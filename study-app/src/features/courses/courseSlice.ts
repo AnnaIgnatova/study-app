@@ -19,7 +19,7 @@ const initialState: CourseState = {
     practise: '',
     testing: '',
     examples: '',
-    id: '',
+    id: localStorage.getItem('study-app-course-id') || "",
     img: '',
   },
   slides: 3,
@@ -44,6 +44,7 @@ export const getCourseDataById = createAsyncThunk(
     try {
       const response = await CourseDataService.findByPk(payload);
       dispatch(getCourseById(response.data));
+      localStorage.setItem('study-app-course-id', response.data.id);
     } catch (err) {
       return rejectWithValue(err);
     }

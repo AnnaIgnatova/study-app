@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowBtn } from '../../components/arrowBtn';
-import { useAppSelector } from '../../store';
+import { getCourseDataById } from '../../features/courses/courseSlice';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { NavBlock } from '../main/NavBlock';
 import { ModalCheckingAnswers } from './modalCheckingAnswers';
 import './style.css';
@@ -10,10 +11,15 @@ import { TestBlock } from './testBlock';
 
 export const TestingTask = () => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [checkAnswers, setCheckAnswers] = useState<boolean>(false);
   const { courseById } = useAppSelector((state) => state.courseReducer);
   const { type } = useAppSelector((state) => state.testingReducer);
+
+  useEffect(() => {
+    if (!courseById.name) dispatch(getCourseDataById(courseById.id));
+  }, []);
 
   return (
     <>

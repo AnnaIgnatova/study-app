@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowBtn } from '../../components/arrowBtn';
+import { getCourseDataById } from '../../features/courses/courseSlice';
 import { changeTest } from '../../features/testing/testingSlice';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { NavBlock } from '../main/NavBlock';
@@ -10,7 +12,11 @@ export const Example = () => {
   const { t } = useTranslation();
   const { courseById } = useAppSelector((state) => state.courseReducer);
   const dispatch = useAppDispatch();
-  const { examples, level } = courseById;
+  const { examples, level, id, name } = courseById;
+
+  useEffect(() => {
+    if (!name) dispatch(getCourseDataById(id));
+  }, []);
 
   const getInfo = () => {
     return JSON.parse(courseById.examples).map((item: any) => {
