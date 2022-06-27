@@ -20,7 +20,7 @@
   font-weight: 300;
   font-size: 14px;
   line-height: 21px;
-  text-transform: uppercase;
+
   color: rgba(0, 0, 0, 0.5);
 }
 .create-course-block input[type='text'] {
@@ -51,7 +51,6 @@
   font-weight: 300;
   font-size: 14px;
   line-height: 21px;
-  text-transform: uppercase;
   color: rgba(0, 0, 0, 0.5);
   padding: 15px;
 }

@@ -6,6 +6,8 @@ export interface CourseState {
   courses: ICourseData[];
   courseById: ICourseData;
   slides: number;
+  weekDay: string;
+  rightAnswers: number;
 }
 
 const initialState: CourseState = {
@@ -19,10 +21,12 @@ const initialState: CourseState = {
     practise: '',
     testing: '',
     examples: '',
-    id: localStorage.getItem('study-app-course-id') || "",
+    id: localStorage.getItem('study-app-course-id') || '',
     img: '',
   },
   slides: 3,
+  weekDay: localStorage.getItem('study-app-course-week') || '',
+  rightAnswers: 0,
 };
 
 export const getCoursesData = createAsyncThunk(
@@ -92,9 +96,17 @@ export const courseSlice = createSlice({
     changeSlides: (state, action) => {
       state.slides = action.payload;
     },
+    changeWeekDay: (state, action) => {
+      localStorage.setItem('study-app-course-week', action.payload);
+      state.weekDay = action.payload;
+    },
+    changeRightAnswers: (state, action) => {
+      state.rightAnswers = action.payload;
+    }
   },
 });
 
-export const { getCourses, addCourse, getCourseById, changeSlides } = courseSlice.actions;
+export const { getCourses, addCourse, getCourseById, changeSlides, changeWeekDay, changeRightAnswers } =
+  courseSlice.actions;
 
 export default courseSlice.reducer;

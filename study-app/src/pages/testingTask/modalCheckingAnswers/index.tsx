@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useAppSelector } from '../../../store';
 import './style.css';
 
 export interface ModalAnswersProps {
@@ -7,6 +8,7 @@ export interface ModalAnswersProps {
 
 export const ModalCheckingAnswers = (props: ModalAnswersProps) => {
   const { t } = useTranslation();
+  const { rightAnswers } = useAppSelector((state: any) => state.courseReducer);
   const { setIsOpen } = props;
   const closeModal = () => {
     setIsOpen(false);
@@ -23,7 +25,10 @@ export const ModalCheckingAnswers = (props: ModalAnswersProps) => {
         <div className="close-modal" onClick={closeModal}></div>
         <div className="modal-answers-info">
           <div className="modal-title">
-            {t('modalAnswers.title')} <span>6 {t('modalAnswers.separate')} 10</span>
+            {t('modalAnswers.title')}{' '}
+            <span>
+              {rightAnswers} {t('modalAnswers.separate')} 5
+            </span>
           </div>
           <img src="./assets/congratulation.png" alt="congratulation" />
           <span className="modal-answers-subtitle">{t('modalAnswers.subtitle')}</span>

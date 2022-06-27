@@ -3,12 +3,14 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowBtn } from '../../components/arrowBtn';
 import { getCourseDataById } from '../../features/courses/courseSlice';
+import { changeUserData } from '../../features/user/userSlice';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { NavBlock } from '../main/NavBlock';
 import './style.css';
 
 export const Theory = () => {
   const { courseById } = useAppSelector((state) => state.courseReducer);
+  const userId = useAppSelector((state) => state.userReducer.id);
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const { name, level, theory, subtitle, id } = courseById;

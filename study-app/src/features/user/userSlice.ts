@@ -106,6 +106,7 @@ export const changeUserData = createAsyncThunk(
   async (payload: ChangeDataPayload, { dispatch, rejectWithValue }) => {
     try {
       const { id, type, value } = payload;
+      console.log(value);
       await UserDataService.changeData(id, type, value);
       switch (type) {
         case 'name': {

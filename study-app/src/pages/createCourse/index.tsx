@@ -21,7 +21,7 @@ export const CreateCourse = () => {
   const { t } = useTranslation();
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  const { isCourseCreated } = useAppSelector((state) => state.modalReducer);
+  const isCourseCreated = useAppSelector((state) => state.modalReducer.isCourseCreated);
   const [courseData, setCourseData] = useState<ICourseData>({
     ...defaultCourseInfo,
   });
@@ -146,6 +146,7 @@ export const CreateCourse = () => {
         practise: JSON.stringify(Object.values(practiseInfo)),
       };
     });
+    // console.log(newState);
     dispatch(createNewCourse(newState));
     (document.querySelector('.create-course-form') as HTMLFormElement).reset();
   };

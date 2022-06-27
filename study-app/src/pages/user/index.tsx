@@ -22,11 +22,7 @@ export const User = () => {
   return (
     <div className="user">
       <div className="user-info">
-        <img
-          src={avatar ? avatar : './assets/avatar.png'}
-          alt="avatar"
-          className="user-avatar"
-        />
+        <img src={avatar ? avatar : './assets/avatar.png'} alt="avatar" className="user-avatar" />
         <span className="user-name">{name}</span>
         <span className="user-email">{email}</span>
         <Link to="/settings">
@@ -35,13 +31,21 @@ export const User = () => {
       </div>
       <div className="user-progress">
         <div className="progress-level">
-          {t('user.currentLevel')} <span className="current-level">{t('user.basic')}</span>
+          {t('user.currentLevel')} <span className="current-level">{Math.floor(level)}</span>
         </div>
-        <div className="level-scale-wrapper">
+        <div
+          className="level-scale-wrapper"
+          onClick={() => {
+            console.log((level % 1).toFixed(2));
+          }}
+        >
           <div className="level-scale">
-            <div className="scale" style={{ width: level }}></div>
+            <div
+              className="scale"
+              style={{ width: `${(level % 1).toFixed(2).toString().split('.')[1]}%` }}
+            ></div>
           </div>
-          <span className="level-num">{level}%</span>
+          <span className="level-num">{(level % 1).toFixed(2).toString().split('.')[1]}%</span>
         </div>
         <div className="progress-level">{t('user.activity')}</div>
         <ProgressPlot data={chartData} />

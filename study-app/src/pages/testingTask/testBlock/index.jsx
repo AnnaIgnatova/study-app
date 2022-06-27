@@ -27,13 +27,21 @@ const resetAnswers = {
 };
 
 export const TestBlock = (props) => {
-  const { data, index, checkAnswers } = props;
+  const { data, index, checkAnswers, setChosenAnswers } = props;
   const [answers, setAnswers] = useState(resetAnswers);
   const { question, right, answer_1, answer_2, answer_3 } = data;
+  const answerValues = [answer_1, answer_2, answer_3];
 
   const chooseAnswer = (type) => {
+    const i = type.split('_')[1];
     setAnswers((state) => {
       return { ...resetAnswers, [type]: true };
+    });
+    setChosenAnswers((state) => {
+      return {
+        ...state,
+        [index]: answerValues[i - 1],
+      };
     });
   };
 

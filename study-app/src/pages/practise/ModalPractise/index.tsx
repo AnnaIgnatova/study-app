@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { FilledBtn } from '../../../components/filledBtn';
+import { changePractise } from '../../../features/testing/testingSlice';
+import { useAppDispatch } from '../../../store';
 import './style.css';
 
 export interface ModalPractiseProps {
@@ -9,6 +11,7 @@ export interface ModalPractiseProps {
 
 export const ModalPractise = (props: ModalPractiseProps) => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
   const { setModalOpen } = props;
 
   const closeModal = () => {
@@ -28,7 +31,12 @@ export const ModalPractise = (props: ModalPractiseProps) => {
         <div className="modal-answers-info">
           <div className="modal-title">{t('modalPractise.title')}</div>
           <img src="./assets/congratulation.png" alt="congratulation" />
-          <Link to="/main">
+          <Link
+            to="/main"
+            onClick={() => {
+              dispatch(changePractise(false));
+            }}
+          >
             <FilledBtn text={t('modalPractise.toMain')} />
           </Link>
         </div>

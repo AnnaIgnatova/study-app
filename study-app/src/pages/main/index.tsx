@@ -9,16 +9,17 @@ import { PrevArrow } from './prevArrow';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { FormEvent, useEffect, useState } from 'react';
-import { getCoursesData, searchByTitle } from '../../features/courses/courseSlice';
-import { createUser } from '../../features/user/userSlice';
+import { changeWeekDay, getCoursesData, searchByTitle } from '../../features/courses/courseSlice';
+import { changeUserData, createUser } from '../../features/user/userSlice';
 
 export const Main = () => {
   const { t } = useTranslation();
-  const { courses, slides } = useAppSelector((state) => state.courseReducer);
+  const { courses, slides, weekDay } = useAppSelector((state) => state.courseReducer);
   const userCourses = JSON.parse(useAppSelector((state) => state.userReducer.courses));
-  const name = useAppSelector((state) => state.userReducer.name);
+  const { name, progress, id } = useAppSelector((state) => state.userReducer);
   const [search, setSearch] = useState<string>('');
   const dispatch = useAppDispatch();
+  const weekDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
   const settings = {
     dots: false,
@@ -33,6 +34,14 @@ export const Main = () => {
   useEffect(() => {
     dispatch(getCoursesData());
     if (!name.length) dispatch(createUser());
+    if (weekDay !== weekDays[new Date().getDay() - 1] && progress) {
+      dispatch(changeWeekDay(weekDays[new Date().getDay() - 1]));
+      const userProgress = {
+        ...JSON.parse(progress),
+        [weekDays[new Date().getDay() - 1]]: 0,
+      };
+      dispatch(changeUserData({ id, type: 'progress', value: JSON.stringify(userProgress) }));
+    }
   }, []);
 
   const searchHandler = (e: FormEvent) => {
@@ -68,13 +77,7 @@ export const Main = () => {
               level={course.level}
               time={course.time}
               img={course.img}
-              progress={
-                userCourses.filter((value: any) => Object.keys(value)[0] == course.id).length
-                  ? userCourses.filter((value: any) => Object.keys(value)[0] == course.id)[0][
-                      course.id
-                    ]
-                  : 0
-              }
+              progress={userCourses.filter((item: any) => Object.keys(item)[0] === `${course.id}`)}
             />
           ))}
         </Slider>
