@@ -114,8 +114,9 @@ export const Header = () => {
         </Link>
       )}
       {location.pathname === '/main' && <div></div>}
+      {!accessToken && location.pathname !== '/' && <div></div>}
       <div className="header-container">
-        {location.pathname !== '/user' && <Link to="/user" className="user-link" />}
+        {location.pathname !== '/user' && accessToken && <Link to="/user" className="user-link" />}
         <Theme />
         <Lang />
       </div>

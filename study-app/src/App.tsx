@@ -17,6 +17,7 @@ import { useAppSelector } from './store';
 
 const App = () => {
   const { themeColor } = useAppSelector((state) => state.themeReducer);
+  const { accessToken } = useAppSelector((state) => state.userReducer);
   return (
     <div
       className="container"
@@ -24,17 +25,21 @@ const App = () => {
     >
       <Header />
       <RoutesWrapper>
+        {accessToken && (
+          <>
+            <Route path="/main" element={<Main />}></Route>
+            <Route path="/user" element={<User />}></Route>
+            <Route path="/settings" element={<Settings />}></Route>
+            <Route path="/testing" element={<Testing />}></Route>
+            <Route path="/testing-task" element={<TestingTask />}></Route>
+            <Route path="/theory" element={<Theory />}></Route>
+            <Route path="/examples" element={<Example />}></Route>
+            <Route path="/practise" element={<Practise />}></Route>
+            <Route path="/create-course" element={<CreateCourse />}></Route>
+            <Route path="/testing-topics" element={<TestingTopics />}></Route>
+          </>
+        )}
         <Route path="/" element={<Welcome />}></Route>
-        <Route path="/main" element={<Main />}></Route>
-        <Route path="/user" element={<User />}></Route>
-        <Route path="/settings" element={<Settings />}></Route>
-        <Route path="/testing" element={<Testing />}></Route>
-        <Route path="/testing-task" element={<TestingTask />}></Route>
-        <Route path="/theory" element={<Theory />}></Route>
-        <Route path="/examples" element={<Example />}></Route>
-        <Route path="/practise" element={<Practise />}></Route>
-        <Route path="/create-course" element={<CreateCourse />}></Route>
-        <Route path="/testing-topics" element={<TestingTopics />}></Route>
         <Route path="*" element={<NotFound />}></Route>
       </RoutesWrapper>
     </div>
