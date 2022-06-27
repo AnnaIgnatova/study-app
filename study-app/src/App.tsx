@@ -16,9 +16,12 @@ import { Welcome } from './pages/welcome';
 import { useAppSelector } from './store';
 
 const App = () => {
-  const { isLight } = useAppSelector((state) => state.themeReducer);
+  const { themeColor } = useAppSelector((state) => state.themeReducer);
   return (
-    <div className="container" style={{ backgroundColor: isLight ? '#503e9d' : '#140F2D' }}>
+    <div
+      className="container"
+      style={{ backgroundColor: themeColor === 'light' ? '#503e9d' : '#140F2D' }}
+    >
       <Header />
       <RoutesWrapper>
         <Route path="/" element={<Welcome />}></Route>

@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface ThemeState {
-  isLight: boolean;
+  themeColor: string;
 }
 
 const initialState: ThemeState = {
-  isLight: true,
+  themeColor: localStorage.getItem('study-app-theme') || 'light',
 };
 
 export const themeSlice = createSlice({
@@ -13,7 +13,9 @@ export const themeSlice = createSlice({
   initialState,
   reducers: {
     changeTheme: (state) => {
-      state.isLight = !state.isLight;
+      const theme = state.themeColor === 'light' ? 'dark' : 'light';
+      localStorage.setItem('study-app-theme', theme);
+      state.themeColor = theme;
     },
   },
 });
