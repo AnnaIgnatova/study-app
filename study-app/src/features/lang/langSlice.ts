@@ -5,7 +5,7 @@ export interface ThemeState {
 }
 
 const initialState: ThemeState = {
-  currentLang: 'ru',
+  currentLang: localStorage.getItem('study-app-lang') || 'ru',
 };
 
 export const langSlice = createSlice({
@@ -13,7 +13,9 @@ export const langSlice = createSlice({
   initialState,
   reducers: {
     changeLang: (state) => {
-      state.currentLang = state.currentLang === 'ru' ? 'en' : 'ru';
+      const lang = state.currentLang === 'ru' ? 'en' : 'ru';
+      state.currentLang = lang;
+      localStorage.setItem('study-app-lang', lang);
     },
   },
 });
