@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { getCourseById, getCourseDataById } from '../../features/courses/courseSlice';
-import { useAppDispatch, useAppSelector } from '../../store';
+import { getCourseDataById } from '../../features/courses/courseSlice';
+import { useAppDispatch } from '../../store';
 import { TopicNav } from './nav';
 import './style.css';
 

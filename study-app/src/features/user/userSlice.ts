@@ -45,7 +45,6 @@ export const createUser = createAsyncThunk(
 
       if (token && id) {
         const response = await UserDataService.findUser(id);
-        console.log(response.data);
         dispatch(getUser({ ...response.data }));
       }
     } catch (err) {

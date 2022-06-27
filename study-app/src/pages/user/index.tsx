@@ -17,8 +17,7 @@ export const User = () => {
 
   useEffect(() => {
     if (!name) dispatch(createUser());
-    console.log(avatar);
-  }, [name, avatar]);
+  }, []);
 
   return (
     <div className="user">

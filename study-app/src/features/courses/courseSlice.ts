@@ -5,6 +5,7 @@ import CourseDataService from './../../services/courses.service';
 export interface CourseState {
   courses: ICourseData[];
   courseById: ICourseData;
+  slides: number;
 }
 
 const initialState: CourseState = {
@@ -21,6 +22,7 @@ const initialState: CourseState = {
     id: '',
     img: '',
   },
+  slides: 3,
 };
 
 export const getCoursesData = createAsyncThunk(
@@ -28,7 +30,7 @@ export const getCoursesData = createAsyncThunk(
   async (payload, { dispatch, rejectWithValue }) => {
     try {
       const response = await CourseDataService.getAll();
-      console.log(response.data);
+      dispatch(changeSlides(response.data.length < 3 ? response.data.length : 3));
       dispatch(getCourses(response.data));
     } catch (err) {
       return rejectWithValue(err);
@@ -60,6 +62,18 @@ export const createNewCourse = createAsyncThunk(
   }
 );
 
+export const searchByTitle = createAsyncThunk(
+  'course/searchByTitle',
+  async (payload: string, { dispatch, rejectWithValue }) => {
+    try {
+      const response = await CourseDataService.findByTitle(payload);
+      dispatch(getCourses(response.data));
+      dispatch(changeSlides(response.data.length < 3 ? response.data.length : 3));
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
 
 export const courseSlice = createSlice({
   name: 'course',
@@ -74,9 +88,12 @@ export const courseSlice = createSlice({
     getCourseById: (state, action) => {
       state.courseById = action.payload;
     },
+    changeSlides: (state, action) => {
+      state.slides = action.payload;
+    },
   },
 });
 
-export const { getCourses, addCourse, getCourseById } = courseSlice.actions;
+export const { getCourses, addCourse, getCourseById, changeSlides } = courseSlice.actions;
 
 export default courseSlice.reducer;

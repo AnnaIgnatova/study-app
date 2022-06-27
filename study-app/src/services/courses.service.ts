@@ -10,5 +10,8 @@ class CourseDataService {
   findByPk(id: string) {
     return http.get<ICourseData>(`/courses/${id}`);
   }
+  findByTitle(title: string) {
+    return http.post<Array<ICourseData>>('/courses/search', { title });
+  }
 }
 export default new CourseDataService();
